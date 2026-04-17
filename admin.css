@@ -1,0 +1,94 @@
+body {
+  background: #050508;
+  color: #F5F0E8;
+  font-family: 'Space Grotesk', sans-serif;
+  margin: 0;
+  padding: 2rem;
+}
+
+/* Title */
+h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3rem;
+  letter-spacing: 3px;
+  background: linear-gradient(135deg, #FFD700, #FF6B00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 2rem;
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 16px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(10px);
+}
+
+/* Header */
+th {
+  padding: 14px;
+  text-align: left;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #FFD700;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Rows */
+td {
+  padding: 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  font-size: 0.85rem;
+  color: rgba(245,240,232,0.8);
+}
+
+/* Hover effect */
+tr:hover {
+  background: rgba(255,215,0,0.05);
+}
+
+/* Image */
+td img {
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+/* Delete Button */
+button {
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: none;
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  cursor: pointer;
+  background: linear-gradient(135deg, #FF2D78, #FF6B00);
+  color: white;
+  transition: all 0.3s;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(255,45,120,0.3);
+}
+
+/* Container spacing */
+.table-container {
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  table {
+    font-size: 0.7rem;
+  }
+
+  th, td {
+    padding: 8px;
+  }
+}
