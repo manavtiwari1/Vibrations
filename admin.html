@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Admin Dashboard</title>
+
+<style>
+body {
+  background: #050508;
+  color: white;
+  font-family: Arial;
+  padding: 2rem;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  text-align: left;
+}
+
+th {
+  color: #FFD700;
+}
+
+button {
+  padding: 6px 12px;
+  cursor: pointer;
+  border-radius: 6px;
+  border: none;
+  background: red;
+  color: white;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Admin Panel</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Event</th>
+      <th>Image</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+
+  <tbody id="tableBody"></tbody>
+</table>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
+<script>
+const supabase = supabase.createClient(
+  "https://vzqaocxyqgbvtzacwmja.supabase.co",
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ6cWFvY3h5cWdidnR6YWN3bWphIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY0NDIxNzgsImV4cCI6MjA5MjAxODE3OH0.66civu28f-yBP2bYPagRenQtINZHEqsGWtU3oGPX0Pk"
+);
+
+// Fetch data
+async function loadData() {
+  const { data, error } = await supabase
+    .from('registrations')
+    .select('*');
+
+  const table = document.getElementById("tableBody");
+  table.innerHTML = "";
+
+  data.forEach(user => {
+    table.innerHTML += `
+      <tr>
+        <td>${user.name}</td>
+        <td>${user.email}</td>
+        <td>${user.event}</td>
+        <td><img src="${user.image}" width="60"></td>
+        <td><button onclick="deleteUser(${user.id})">Delete</button></td>
+      </tr>
+    `;
+  });
+}
+
+// Delete user
+async function deleteUser(id) {
+  await supabase
+    .from('registrations')
+    .delete()
+    .eq('id', id);
+
+  loadData();
+}
+
+loadData();
+</script>
+
+</body>
+</html>
