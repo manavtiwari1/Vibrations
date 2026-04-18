@@ -93,7 +93,7 @@ footer{background:#050202;border-top:1px solid rgba(201,168,76,.15);padding:2.5r
 .go{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,4,4,.85) 0%,transparent 55%);opacity:0;transition:opacity .25s;display:flex;align-items:flex-end;padding:1.1rem 1.3rem}
 .gi:hover .go{opacity:1}
 .go-l{font-family:"Cinzel",serif;font-size:.62rem;letter-spacing:.18em;color:var(--gold)}
-/* lightbox */
+/* photo lightbox */
 .lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:99999;align-items:center;justify-content:center;padding:2rem}
 .lb.open{display:flex}
 .lbx{position:relative;max-width:800px;width:100%;background:var(--dark2);border:1px solid rgba(201,168,76,.25);padding:3rem 2.5rem;text-align:center}
@@ -104,14 +104,29 @@ footer{background:#050202;border-top:1px solid rgba(201,168,76,.15);padding:2.5r
 .uz{max-width:670px;margin:0 auto 4.5rem;text-align:center;padding:2.5rem 2rem;border:1px dashed rgba(201,168,76,.22);background:rgba(201,168,76,.025)}
 .uz h3{font-family:"Cinzel",serif;font-size:.83rem;letter-spacing:.18em;color:var(--gold);margin:1rem 0 .6rem}
 .uz p{font-size:1.05rem;color:var(--muted);line-height:1.7}
-.vg{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:4px;max-width:1180px;margin:0 auto}
-.vc{position:relative;padding-bottom:56.25%;cursor:pointer;overflow:hidden}
-.vi{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;border:1px solid rgba(201,168,76,.08);transition:border-color .25s}
+
+/* video grid */
+.vg{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px;max-width:1180px;margin:0 auto}
+.vc{position:relative;padding-bottom:56.25%;cursor:pointer;overflow:hidden;border-radius:2px;border:1px solid rgba(201,168,76,.1);background:#0a0505;transition:border-color .3s,transform .3s}
+.vc:hover{border-color:rgba(201,168,76,.4);transform:translateY(-3px)}
 .vc:hover .vi{border-color:rgba(201,168,76,.38)}
-.pr{width:66px;height:66px;border-radius:50%;border:2px solid var(--gold);background:rgba(201,168,76,.1);display:flex;align-items:center;justify-content:center;transition:background .25s,transform .25s}
-.vc:hover .pr{background:rgba(201,168,76,.26);transform:scale(1.1)}
+/* YouTube thumbnail background */
+.vc[data-video] .vi{background-size:cover;background-position:center}
+.vi{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;border:1px solid rgba(201,168,76,.08);transition:border-color .25s;background:rgba(8,4,4,.55)}
+.pr{width:66px;height:66px;border-radius:50%;border:2px solid var(--gold);background:rgba(201,168,76,.15);display:flex;align-items:center;justify-content:center;transition:background .25s,transform .25s;box-shadow:0 0 24px rgba(201,168,76,.18)}
+.vc:hover .pr{background:rgba(201,168,76,.35);transform:scale(1.12)}
 .pt{width:0;height:0;border-top:11px solid transparent;border-bottom:11px solid transparent;border-left:18px solid var(--gold);margin-left:4px}
 .vt{font-family:"Cinzel",serif;font-size:.66rem;letter-spacing:.15em;color:var(--smoke2);text-transform:uppercase}
+.vd{font-family:"DM Sans",sans-serif;font-size:.6rem;color:var(--muted);margin-top:.2rem}
+
+/* video lightbox */
+.vlb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.96);z-index:100000;align-items:center;justify-content:center;flex-direction:column;padding:1rem}
+.vlb.open{display:flex}
+.vlb-wrap{position:relative;width:100%;max-width:900px;aspect-ratio:16/9;background:#000}
+.vlb-wrap iframe,.vlb-wrap video{position:absolute;inset:0;width:100%;height:100%;border:none}
+.vlb-title{font-family:"Cinzel",serif;font-size:.75rem;letter-spacing:.2em;color:var(--gold);margin-top:1.2rem;text-transform:uppercase}
+.vlb-close{position:fixed;top:1.2rem;right:1.5rem;font-family:"Cinzel",serif;font-size:.7rem;letter-spacing:.15em;color:var(--muted);cursor:pointer;border:1px solid rgba(201,168,76,.2);padding:.4rem 1rem;transition:color .2s,border-color .2s;text-transform:uppercase;background:rgba(8,4,4,.8)}
+.vlb-close:hover{color:var(--gold);border-color:var(--gold)}
 @media(max-width:768px){
   .gi:nth-child(1){grid-column:span 12}
   .gi:nth-child(2),.gi:nth-child(3){grid-column:span 6}
@@ -185,21 +200,66 @@ footer{background:#050202;border-top:1px solid rgba(201,168,76,.15);padding:2.5r
 
   <div class="sh"><div class="sk">Video Highlights</div><h2 class="st">On Stage, On Screen</h2><div class="sr"></div></div>
   <div class="vg">
-    <div class="vc"><div class="vi gc1"><div class="pr"><div class="pt"></div></div><div class="vt">Vibrations 2026 — Full Highlights</div></div></div>
-    <div class="vc"><div class="vi gc2"><div class="pr"><div class="pt"></div></div><div class="vt">Amit Mishra Live — Artist Night</div></div></div>
-    <div class="vc"><div class="vi gc3"><div class="pr"><div class="pt"></div></div><div class="vt">Footloose — Dance Championship</div></div></div>
+    <!--
+      HOW TO ADD A VIDEO:
+      • YouTube: set data-video="YOUTUBE_VIDEO_ID"  (the part after ?v= in the URL)
+        Example: https://youtu.be/dQw4w9WgXcQ → data-video="dQw4w9WgXcQ"
+      • Local file: set data-video="videos/yourfile.mp4"  (put the file in a /videos folder)
+        Example: data-video="videos/highlights.mp4"
+      Change data-title to whatever title you want shown
+    -->
+    <div class="vc" id="vid-1"
+         data-video="PASTE_YOUTUBE_ID_HERE"
+         data-title="Vibrations 2026 — Full Highlights"
+         data-type="youtube"
+         onclick="openVideo(this)">
+      <div class="vi gc1">
+        <div class="pr"><div class="pt"></div></div>
+        <div class="vt">Vibrations 2026 — Full Highlights</div>
+        <div class="vd">Artist Night · Main Stage</div>
+      </div>
+    </div>
+    <div class="vc" id="vid-2"
+         data-video="PASTE_YOUTUBE_ID_HERE"
+         data-title="Amit Mishra Live — Artist Night"
+         data-type="youtube"
+         onclick="openVideo(this)">
+      <div class="vi gc2">
+        <div class="pr"><div class="pt"></div></div>
+        <div class="vt">Amit Mishra Live — Artist Night</div>
+        <div class="vd">Vibrations 2026</div>
+      </div>
+    </div>
+    <div class="vc" id="vid-3"
+         data-video="PASTE_YOUTUBE_ID_HERE"
+         data-title="Footloose — Dance Championship"
+         data-type="youtube"
+         onclick="openVideo(this)">
+      <div class="vi gc3">
+        <div class="pr"><div class="pt"></div></div>
+        <div class="vt">Footloose — Dance Championship</div>
+        <div class="vd">Intercollegiate · Delhi</div>
+      </div>
+    </div>
   </div>
   <div class="orn">◆ &nbsp; ◆ &nbsp; ◆</div>
 </div>
 </div>
 
-<!-- LIGHTBOX -->
+<!-- PHOTO LIGHTBOX -->
 <div class="lb" id="lb" onclick="closeLb(event)">
   <div class="lbx">
     <span class="lb-close" onclick="document.getElementById('lb').classList.remove('open')">✕ Close</span>
     <h3 id="lb-title"></h3>
     <p id="lb-desc"></p>
   </div>
+</div>
+
+<!-- VIDEO LIGHTBOX -->
+<div class="vlb" id="vlb">
+  <span class="vlb-close" onclick="closeVideo()">✕ Close</span>
+  <div class="vlb-wrap" id="vlb-wrap"></div>
+  <div class="vlb-title" id="vlb-title"></div>
 </div>
 
 <footer>
@@ -213,12 +273,39 @@ footer{background:#050202;border-top:1px solid rgba(201,168,76,.15);padding:2.5r
   <div class="fc">© 2027 Vibrations · Organised by Anchorage — The Cultural Committee of Shivaji College</div>
 </footer>
 <script>
+/* ── Photo lightbox ── */
 function openLb(t,d){
   document.getElementById("lb-title").textContent=t;
   document.getElementById("lb-desc").textContent=d;
   document.getElementById("lb").classList.add("open");
 }
 function closeLb(e){if(e.target.id==="lb")document.getElementById("lb").classList.remove("open")}
-document.addEventListener("keydown",e=>{if(e.key==="Escape")document.getElementById("lb").classList.remove("open")});
+
+/* ── Video lightbox ── */
+function openVideo(card){
+  var vid   = card.dataset.video;
+  var title = card.dataset.title || "";
+  var wrap  = document.getElementById("vlb-wrap");
+  // Detect YouTube (≤11-char alphanumeric ID) vs local file
+  var isYT  = /^[a-zA-Z0-9_\-]{6,16}$/.test(vid) && !vid.includes("/") && !vid.includes(".");
+  if(isYT){
+    wrap.innerHTML = '<iframe src="https://www.youtube.com/embed/'+vid+'?autoplay=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+  } else {
+    wrap.innerHTML = '<video src="'+vid+'" controls autoplay></video>';
+  }
+  document.getElementById("vlb-title").textContent = title;
+  document.getElementById("vlb").classList.add("open");
+}
+function closeVideo(){
+  document.getElementById("vlb").classList.remove("open");
+  document.getElementById("vlb-wrap").innerHTML = ""; // stops playback
+}
+
+document.addEventListener("keydown",function(e){
+  if(e.key==="Escape"){
+    document.getElementById("lb").classList.remove("open");
+    closeVideo();
+  }
+});
 </script>
 </body></html>
