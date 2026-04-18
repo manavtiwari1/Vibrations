@@ -118,6 +118,146 @@ footer{background:#050202;border-top:1px solid rgba(201,168,76,.15);padding:2.5r
 .qnav a:hover{background:rgba(201,168,76,.15);border-color:var(--gold);color:var(--gold)}
 @media(max-width:768px){.htitle{font-size:clamp(3rem,16vw,5rem)}}
 
+/* REGISTRATION SECTION */
+.registration-section{
+  padding:5rem 2rem 6rem;
+  background:radial-gradient(ellipse 80% 60% at 50% 50%,#1a0a0a 0%,var(--dark) 80%);
+  position:relative;
+  overflow:hidden;
+}
+.registration-section::before{
+  content:"";
+  position:absolute;inset:0;
+  background-image:repeating-linear-gradient(45deg,rgba(201,168,76,.018) 0,rgba(201,168,76,.018) 1px,transparent 1px,transparent 50px),
+  repeating-linear-gradient(-45deg,rgba(201,168,76,.018) 0,rgba(201,168,76,.018) 1px,transparent 1px,transparent 50px);
+  pointer-events:none;
+}
+.section-title{
+  font-family:"Cinzel Decorative",serif;
+  font-size:clamp(1.8rem,4vw,3rem);
+  text-align:center;
+  margin-bottom:2.8rem;
+  background:linear-gradient(135deg,var(--smoke) 10%,var(--gold2) 50%,var(--smoke2) 90%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  letter-spacing:.06em;
+}
+.section-title span{
+  background:linear-gradient(135deg,var(--gold) 0%,var(--gold2) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.form-card{
+  max-width:520px;
+  margin:0 auto;
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(201,168,76,.2);
+  border-radius:2px;
+  padding:2.8rem 2.5rem;
+  backdrop-filter:blur(12px);
+  box-shadow:0 8px 48px rgba(0,0,0,.45),inset 0 1px 0 rgba(201,168,76,.08);
+  position:relative;
+  animation:fu .8s ease .1s both;
+}
+.form-card::before{
+  content:"";
+  position:absolute;top:0;left:2rem;right:2rem;height:1px;
+  background:linear-gradient(to right,transparent,var(--gold),transparent);
+  opacity:.4;
+}
+.input-field{
+  width:100%;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(201,168,76,.18);
+  color:var(--smoke);
+  font-family:"Cormorant Garamond",serif;
+  font-size:1rem;
+  padding:.85rem 1.1rem;
+  margin-bottom:1.2rem;
+  outline:none;
+  border-radius:1px;
+  transition:border-color .25s,background .25s,box-shadow .25s;
+  -webkit-appearance:none;
+  appearance:none;
+}
+.input-field::placeholder{color:var(--muted);font-style:italic}
+.input-field:focus{
+  border-color:rgba(201,168,76,.55);
+  background:rgba(201,168,76,.04);
+  box-shadow:0 0 0 3px rgba(201,168,76,.07);
+}
+select.input-field option{background:var(--dark2);color:var(--smoke)}
+.btn-primary{
+  width:100%;
+  padding:.95rem 1.5rem;
+  background:linear-gradient(135deg,rgba(201,168,76,.15) 0%,rgba(201,168,76,.22) 100%);
+  border:1px solid rgba(201,168,76,.45);
+  color:var(--gold2);
+  font-family:"Cinzel",serif;
+  font-size:.75rem;
+  letter-spacing:.25em;
+  text-transform:uppercase;
+  cursor:pointer;
+  transition:background .25s,border-color .25s,transform .15s,box-shadow .25s;
+  border-radius:1px;
+  position:relative;
+  overflow:hidden;
+}
+.btn-primary::after{
+  content:"";
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,transparent 40%,rgba(255,255,255,.04) 100%);
+  pointer-events:none;
+}
+.btn-primary:hover{
+  background:linear-gradient(135deg,rgba(201,168,76,.25) 0%,rgba(232,201,107,.3) 100%);
+  border-color:var(--gold);
+  box-shadow:0 4px 20px rgba(201,168,76,.2);
+  transform:translateY(-1px);
+}
+.btn-primary:active{transform:translateY(0)}
+.toast-msg{
+  display:none;
+  margin-top:1.2rem;
+  padding:.75rem 1rem;
+  border:1px solid rgba(201,168,76,.35);
+  background:rgba(201,168,76,.08);
+  color:var(--gold2);
+  font-family:"Cinzel",serif;
+  font-size:.68rem;
+  letter-spacing:.15em;
+  text-align:center;
+  animation:fu .4s ease;
+}
+
+.registration-section {
+  padding: 5rem 2rem;
+  text-align: center;
+}
+
+.form-card {
+  max-width: 400px;
+  margin: auto;
+  padding: 2rem;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+}
+
+.input-field {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: transparent;
+  color: white;
+}
+
+.input-field:focus {
+  border-color: #FFD700;
+  outline: none;
+}
+
 </style>
 </head>
 <body>
@@ -166,6 +306,29 @@ footer{background:#050202;border-top:1px solid rgba(201,168,76,.15);padding:2.5r
     </div>
   </div>
 </div>
+
+<!-- ============ REGISTRATION SECTION ============ -->
+<section class="registration-section" id="register">
+  <div class="sh">
+    <div class="sk">Join The Celebration</div>
+  </div>
+  <h2 class="section-title">Register <span>Now</span></h2>
+
+  <div class="form-card">
+    <input type="text" id="reg-name" placeholder="Your Name" class="input-field" autocomplete="off">
+    <input type="email" id="reg-email" placeholder="Your Email" class="input-field" autocomplete="off">
+
+    <select id="reg-event" class="input-field">
+      <option value="">Select Event</option>
+      <option value="Diwali Mela">Diwali Mela</option>
+      <option value="Shivraj - Shivaji Jayanti">Shivraj - Shivaji Jayanti</option>
+      <option value="Vibrations">Vibrations</option>
+    </select>
+
+    <button id="reg-btn" onclick="registerUser()" class="btn-primary">Register</button>
+    <div id="reg-toast" class="toast-msg"></div>
+  </div>
+</section>
 </div>
 
 <footer>
@@ -189,5 +352,66 @@ function tick(){
   document.getElementById("cd-s").textContent=String(s).padStart(2,"0");
 }
 tick();setInterval(tick,1000);
+
+function registerUser(){
+  const name=document.getElementById("reg-name").value.trim();
+  const email=document.getElementById("reg-email").value.trim();
+  const event=document.getElementById("reg-event").value;
+  const toast=document.getElementById("reg-toast");
+  const emailRx=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if(!name){showToast("\u26a0 Please enter your name.",false);return;}
+  if(!emailRx.test(email)){showToast("\u26a0 Please enter a valid email.",false);return;}
+  if(!event){showToast("\u26a0 Please select an event.",false);return;}
+
+  showToast("\u2713 Registered for \u2018"+event+"\u2019! See you there.",true);
+  document.getElementById("reg-name").value="";
+  document.getElementById("reg-email").value="";
+  document.getElementById("reg-event").value="";
+}
+
+function showToast(msg,ok){
+  const t=document.getElementById("reg-toast");
+  t.textContent=msg;
+  t.style.display="block";
+  t.style.borderColor=ok?"rgba(201,168,76,.45)":"rgba(200,60,60,.4)";
+  t.style.color=ok?"var(--gold2)":"#e07070";
+  clearTimeout(t._timer);
+  t._timer=setTimeout(function(){t.style.display="none";},4000);
+}
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
+<script>
+const { createClient } = supabase;
+const supabaseClient = createClient(
+  "https://vzqaocxyqgbvtzacwmja.supabase.co",
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ6cWFvY3h5cWdidnR6YWN3bWphIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY0NDIxNzgsImV4cCI6MjA5MjAxODE3OH0.66civu28f-yBP2bYPagRenQtINZHEqsGWtU3oGPX0Pk"
+);
+
+async function registerUser() {
+  const name = document.getElementById("reg-name").value.trim();
+  const email = document.getElementById("reg-email").value.trim();
+  const event = document.getElementById("reg-event").value;
+
+  if (!name || !email || !event) {
+    alert("Please fill all fields.");
+    return;
+  }
+
+  const { data, error } = await supabaseClient
+    .from('registrations')
+    .insert([{ name, email, event }]);
+
+  if (error) {
+    alert("Error: " + error.message);
+  } else {
+    alert("🎉 Registration Successful!");
+    document.getElementById("reg-name").value = "";
+    document.getElementById("reg-email").value = "";
+    document.getElementById("reg-event").value = "";
+  }
+}
 </script>
 </body></html>
