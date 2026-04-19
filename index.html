@@ -5,6 +5,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>VIBRATIONS 2027 — Shivaji College</title>
+  <script>
+    if (!localStorage.getItem("isLoggedIn")) {
+      window.location.href = "vibrations_login_page.html";
+    }
+  </script>
   <link
     href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap"
     rel="stylesheet">
@@ -833,6 +838,7 @@
       <li><a href="gallery.html" class="">Gallery</a></li>
       <li><a href="about.html" class="">About</a></li>
       <li><a href="contact.html" class="">Contact</a></li>
+      <li><button onclick="logout()" style="background:none; border:none; color:var(--gold); cursor:pointer; font-family:inherit; font-size:inherit; padding:0; margin:0;">Logout</button></li>
     </ul>
   </nav>
   <div class="pw">
@@ -983,6 +989,11 @@
         document.getElementById("reg-email").value = "";
         document.getElementById("reg-event").value = "";
       }
+    }
+
+    function logout() {
+      localStorage.removeItem("isLoggedIn");
+      window.location.href = "vibrations_login_page.html";
     }
   </script>
 </body>
