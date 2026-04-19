@@ -7,19 +7,25 @@
   <title>VIBRATIONS 2027 — Shivaji College</title>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script>
-    const supabase = window.supabase.createClient(
+    const { createClient } = supabase;
+    const supabaseClient = createClient(
       "https://ewqqnnmgwwlycbuytthi.supabase.co",
       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV3cXFubm1nd3dseWNidXl0dGhpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY2MDk5NzUsImV4cCI6MjA5MjE4NTk3NX0.mRMk87rKtYSdzWfP-jbGzPZqdW5jG5UHDc-acIxbN-Y"
     );
 
     async function checkUser() {
-      const { data } = await supabase.auth.getUser();
+      const { data } = await supabaseClient.auth.getUser();
       if (!data.user) {
         window.location.href = "login.html";
       }
     }
 
     checkUser();
+
+    async function logout() {
+      await supabaseClient.auth.signOut();
+      window.location.href = "login.html";
+    }
   </script>
   <link
     href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap"
