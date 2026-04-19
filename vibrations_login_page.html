@@ -395,8 +395,18 @@
       if (!name) { showMsg('Please enter your full name.', 'error'); return; }
       if (pass !== pass2) { showMsg('Passwords do not match.', 'error'); return; }
       showMsg('Account created! Welcome to Vibrations 2027.', 'success');
+      localStorage.setItem('isLoggedIn', 'true');
+      localStorage.setItem('userName', name);
+      setTimeout(() => { window.location.href = 'index.html'; }, 1000);
     } else {
       showMsg('Signed in successfully. Welcome back!', 'success');
+
+      localStorage.setItem("isLoggedIn", "true");
+
+      // redirect to home page after login
+      setTimeout(() => {
+        window.location.href = "index.html";
+      }, 1000);
     }
   }
 
@@ -409,4 +419,10 @@
   function googleSignIn() {
     showMsg('Google sign-in coming soon.', 'error');
   }
+
+  window.onload = () => {
+    if (!localStorage.getItem("isLoggedIn")) {
+      document.getElementById("tab-signup").style.display = "none";
+    }
+  };
 </script>
