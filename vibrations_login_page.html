@@ -1,0 +1,412 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;1,400&family=DM+Sans:wght@300;400&display=swap');
+
+  .vib-login-root {
+    min-height: 520px;
+    background: radial-gradient(ellipse 90% 80% at 50% 50%, #2d1010 0%, #120808 50%, #080404 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2.5rem 1rem;
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+  }
+  .vib-hd {
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(45deg, rgba(201,168,76,.025) 0, rgba(201,168,76,.025) 1px, transparent 1px, transparent 40px),
+      repeating-linear-gradient(-45deg, rgba(201,168,76,.025) 0, rgba(201,168,76,.025) 1px, transparent 1px, transparent 40px);
+    pointer-events: none;
+  }
+  .vib-ring1 {
+    position: absolute;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    border: 1px solid rgba(201,168,76,.06);
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    animation: vib-rot 60s linear infinite;
+    pointer-events: none;
+  }
+  .vib-ring2 {
+    position: absolute;
+    width: 750px; height: 750px;
+    border-radius: 50%;
+    border: 1px solid rgba(201,168,76,.03);
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    animation: vib-rot 90s linear infinite reverse;
+    pointer-events: none;
+  }
+  @keyframes vib-rot { to { transform: translate(-50%,-50%) rotate(360deg); } }
+
+  .vib-card {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: 400px;
+    background: rgba(255,255,255,.03);
+    border: 1px solid rgba(201,168,76,.2);
+    border-radius: 2px;
+    padding: 2.5rem 2rem 2rem;
+    box-shadow: inset 0 1px 0 rgba(201,168,76,.07);
+  }
+  .vib-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 2rem; right: 2rem;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(201,168,76,.45), transparent);
+  }
+
+  .vib-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1.8rem;
+  }
+  .vib-logo img {
+    width: 60px; height: 60px;
+    border-radius: 50%;
+    border: 2px solid rgba(201,168,76,.7);
+    object-fit: cover;
+    margin-bottom: 1rem;
+  }
+  .vib-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: .55rem;
+    letter-spacing: .35em;
+    color: rgba(201,168,76,.6);
+    text-transform: uppercase;
+    margin-bottom: .5rem;
+  }
+  .vib-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #fff 10%, #E8C96B 50%, #C9A84C 90%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: .07em;
+    line-height: 1;
+    margin-bottom: .2rem;
+  }
+  .vib-sub {
+    font-family: 'DM Sans', sans-serif;
+    font-size: .62rem;
+    letter-spacing: .08em;
+    color: rgba(242,232,217,.35);
+    margin-top: .4rem;
+  }
+  .vib-divider {
+    width: 50px; height: 1px;
+    background: linear-gradient(to right, transparent, rgba(201,168,76,.4), transparent);
+    margin: 1.2rem auto 1.6rem;
+  }
+
+  .vib-tabs {
+    display: flex;
+    border: 1px solid rgba(201,168,76,.15);
+    margin-bottom: 1.6rem;
+  }
+  .vib-tab {
+    flex: 1;
+    font-family: 'Cinzel', serif;
+    font-size: .58rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: rgba(217,201,176,.45);
+    background: transparent;
+    border: none;
+    padding: .6rem .5rem;
+    cursor: pointer;
+    transition: color .2s, background .2s;
+  }
+  .vib-tab.active {
+    color: #E8C96B;
+    background: rgba(201,168,76,.08);
+  }
+  .vib-tab + .vib-tab {
+    border-left: 1px solid rgba(201,168,76,.15);
+  }
+
+  .vib-field {
+    margin-bottom: 1rem;
+  }
+  .vib-label {
+    display: block;
+    font-family: 'Cinzel', serif;
+    font-size: .53rem;
+    letter-spacing: .22em;
+    color: rgba(140,122,101,.8);
+    text-transform: uppercase;
+    margin-bottom: .35rem;
+  }
+  .vib-input {
+    width: 100%;
+    box-sizing: border-box;
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(201,168,76,.18);
+    color: #F2E8D9;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    padding: .75rem 1rem;
+    outline: none;
+    border-radius: 1px;
+    transition: border-color .2s, background .2s;
+  }
+  .vib-input::placeholder { color: rgba(140,122,101,.55); font-style: italic; }
+  .vib-input:focus {
+    border-color: rgba(201,168,76,.5);
+    background: rgba(201,168,76,.04);
+  }
+
+  .vib-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.3rem;
+    margin-top: -.3rem;
+  }
+  .vib-check-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: .62rem;
+    color: rgba(140,122,101,.7);
+    cursor: pointer;
+  }
+  .vib-check-label input[type=checkbox] {
+    accent-color: #C9A84C;
+    width: 12px; height: 12px;
+  }
+  .vib-forgot {
+    font-family: 'Cinzel', serif;
+    font-size: .53rem;
+    letter-spacing: .15em;
+    color: rgba(201,168,76,.5);
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    transition: color .2s;
+  }
+  .vib-forgot:hover { color: #C9A84C; }
+
+  .vib-btn {
+    width: 100%;
+    padding: .85rem 1rem;
+    background: linear-gradient(135deg, rgba(201,168,76,.15) 0%, rgba(201,168,76,.22) 100%);
+    border: 1px solid rgba(201,168,76,.45);
+    color: #E8C96B;
+    font-family: 'Cinzel', serif;
+    font-size: .68rem;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 1px;
+    transition: background .2s, border-color .2s, transform .15s;
+    margin-bottom: .75rem;
+  }
+  .vib-btn:hover {
+    background: linear-gradient(135deg, rgba(201,168,76,.25) 0%, rgba(232,201,107,.3) 100%);
+    border-color: #C9A84C;
+    transform: translateY(-1px);
+  }
+  .vib-btn:active { transform: translateY(0); }
+  .vib-btn-ghost {
+    background: transparent;
+    border: 1px solid rgba(201,168,76,.18);
+    color: rgba(217,201,176,.45);
+    margin-bottom: 0;
+  }
+  .vib-btn-ghost:hover {
+    background: rgba(201,168,76,.06);
+    border-color: rgba(201,168,76,.35);
+    color: rgba(217,201,176,.7);
+  }
+
+  .vib-divider-text {
+    display: flex;
+    align-items: center;
+    gap: .8rem;
+    margin: .9rem 0;
+    font-family: 'DM Sans', sans-serif;
+    font-size: .58rem;
+    letter-spacing: .12em;
+    color: rgba(140,122,101,.4);
+  }
+  .vib-divider-text::before, .vib-divider-text::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: rgba(201,168,76,.12);
+  }
+
+  .vib-msg {
+    font-family: 'DM Sans', sans-serif;
+    font-size: .62rem;
+    text-align: center;
+    padding: .55rem .75rem;
+    border-radius: 1px;
+    margin-top: .75rem;
+    display: none;
+  }
+  .vib-msg.success {
+    display: block;
+    background: rgba(29,158,117,.12);
+    border: 1px solid rgba(29,158,117,.3);
+    color: #5DCAA5;
+  }
+  .vib-msg.error {
+    display: block;
+    background: rgba(226,75,74,.1);
+    border: 1px solid rgba(226,75,74,.25);
+    color: #F09595;
+  }
+
+  .vib-signup-fields { display: none; }
+  .vib-signup-fields.visible { display: block; }
+
+  .vib-footer-note {
+    font-family: 'DM Sans', sans-serif;
+    font-size: .58rem;
+    color: rgba(140,122,101,.4);
+    text-align: center;
+    margin-top: 1.2rem;
+    letter-spacing: .04em;
+  }
+  .vib-footer-note span {
+    color: rgba(201,168,76,.5);
+    cursor: pointer;
+  }
+  .vib-footer-note span:hover { color: #C9A84C; }
+</style>
+
+<div class="vib-login-root">
+  <div class="vib-hd"></div>
+  <div class="vib-ring1"></div>
+  <div class="vib-ring2"></div>
+
+  <div class="vib-card">
+    <div class="vib-logo">
+      <div class="vib-eyebrow">Shivaji College · Delhi University</div>
+      <div class="vib-title">Vibrations</div>
+      <div class="vib-sub">Annual Cultural Festival · 2027</div>
+    </div>
+    <div class="vib-divider"></div>
+
+    <div class="vib-tabs">
+      <button class="vib-tab active" id="tab-login" onclick="switchTab('login')">Sign In</button>
+      <button class="vib-tab" id="tab-signup" onclick="switchTab('signup')">Register</button>
+    </div>
+
+    <form onsubmit="handleSubmit(event)">
+      <div class="vib-signup-fields" id="signup-name-field">
+        <div class="vib-field">
+          <label class="vib-label">Full Name</label>
+          <input class="vib-input" id="inp-name" type="text" placeholder="Your name" autocomplete="name">
+        </div>
+      </div>
+
+      <div class="vib-field">
+        <label class="vib-label">Email Address</label>
+        <input class="vib-input" id="inp-email" type="email" placeholder="you@example.com" autocomplete="email">
+      </div>
+
+      <div class="vib-field">
+        <label class="vib-label">Password</label>
+        <input class="vib-input" id="inp-pass" type="password" placeholder="Enter password" autocomplete="current-password">
+      </div>
+
+      <div class="vib-signup-fields" id="signup-confirm-field">
+        <div class="vib-field">
+          <label class="vib-label">Confirm Password</label>
+          <input class="vib-input" id="inp-pass2" type="password" placeholder="Re-enter password">
+        </div>
+        <div class="vib-field">
+          <label class="vib-label">College / Institution</label>
+          <input class="vib-input" id="inp-college" type="text" placeholder="Your college name">
+        </div>
+      </div>
+
+      <div class="vib-row" id="row-remember">
+        <label class="vib-check-label">
+          <input type="checkbox" id="chk-remember"> Remember me
+        </label>
+        <a class="vib-forgot" onclick="forgotPassword()">Forgot password?</a>
+      </div>
+
+      <button class="vib-btn" type="submit" id="submit-btn">Enter the Festival</button>
+      <div class="vib-divider-text">or continue with</div>
+      <button class="vib-btn vib-btn-ghost" type="button" onclick="googleSignIn()">Google Account</button>
+
+      <div class="vib-msg" id="vib-msg"></div>
+    </form>
+
+    <div class="vib-footer-note" id="footer-note">
+      New to Vibrations? <span onclick="switchTab('signup')">Create an account</span>
+    </div>
+  </div>
+</div>
+
+<script>
+  let mode = 'login';
+
+  function switchTab(t) {
+    mode = t;
+    document.getElementById('tab-login').classList.toggle('active', t === 'login');
+    document.getElementById('tab-signup').classList.toggle('active', t === 'signup');
+    const sf = document.querySelectorAll('.vib-signup-fields');
+    sf.forEach(el => el.classList.toggle('visible', t === 'signup'));
+    document.getElementById('row-remember').style.display = t === 'login' ? 'flex' : 'none';
+    document.getElementById('submit-btn').textContent = t === 'login' ? 'Enter the Festival' : 'Create Account';
+    document.getElementById('footer-note').innerHTML = t === 'login'
+      ? 'New to Vibrations? <span onclick="switchTab(\'signup\')">Create an account</span>'
+      : 'Already registered? <span onclick="switchTab(\'login\')">Sign in</span>';
+    hideMsg();
+  }
+
+  function showMsg(text, type) {
+    const el = document.getElementById('vib-msg');
+    el.textContent = text;
+    el.className = 'vib-msg ' + type;
+  }
+  function hideMsg() {
+    document.getElementById('vib-msg').className = 'vib-msg';
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const email = document.getElementById('inp-email').value.trim();
+    const pass = document.getElementById('inp-pass').value;
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+    if (!email || !emailOk) { showMsg('Please enter a valid email address.', 'error'); return; }
+    if (pass.length < 6) { showMsg('Password must be at least 6 characters.', 'error'); return; }
+
+    if (mode === 'signup') {
+      const name = document.getElementById('inp-name').value.trim();
+      const pass2 = document.getElementById('inp-pass2').value;
+      if (!name) { showMsg('Please enter your full name.', 'error'); return; }
+      if (pass !== pass2) { showMsg('Passwords do not match.', 'error'); return; }
+      showMsg('Account created! Welcome to Vibrations 2027.', 'success');
+    } else {
+      showMsg('Signed in successfully. Welcome back!', 'success');
+    }
+  }
+
+  function forgotPassword() {
+    const email = document.getElementById('inp-email').value.trim();
+    if (!email) { showMsg('Enter your email above to reset password.', 'error'); return; }
+    showMsg('Password reset link sent to ' + email, 'success');
+  }
+
+  function googleSignIn() {
+    showMsg('Google sign-in coming soon.', 'error');
+  }
+</script>
