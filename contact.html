@@ -1,11 +1,17 @@
-
 hey
 
 12:05 PM
 Hey! How can I help you today?
 
 
-<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Contact — Vibrations 2027</title> <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700&
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Vibrations 2027</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700&
 
 pasted
 
@@ -28,403 +34,735 @@ To add images, just fill in the src attribute for each card:
 
 html
 <!-- Example for Akshat Wallia -->
-<img class="tm-avatar" src="images/akshat-wallia.jpg" alt="Akshat Wallia">
-Key details about the circular images:
+<img class=" tm-avatar" src="images/akshat-wallia.jpg" alt="Akshat Wallia">
+  Key details about the circular images:
 
-44×44px, automatically cropped to a perfect circle via border-radius: 50%
-A subtle gold border that brightens on card hover
-A soft silhouette placeholder (radial gradient) shows while images are empty, so the layout looks clean even before you upload
-The cards gracefully degrade — no broken image icons will appear
+  44×44px, automatically cropped to a perfect circle via border-radius: 50%
+  A subtle gold border that brightens on card hover
+  A soft silhouette placeholder (radial gradient) shows while images are empty, so the layout looks clean even before
+  you upload
+  The cards gracefully degrade — no broken image icons will appear
 
-Contact
-Code · HTML 
+  Contact
+  Code · HTML
 
-You are out of free messages until 4:30 PM
-Upgrade
+  You are out of free messages until 4:30 PM
+  Upgrade
 
 
 
-Claude is AI and can make mistakes. Please double-check responses.
-Contact · HTML
-Copy
+  Claude is AI and can make mistakes. Please double-check responses.
+  Contact · HTML
+  Copy
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact — Vibrations 2027</title>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
- 
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --gold:#C9A84C;--gold2:#E8C96B;
-  --crimson:#7A1C1C;--dark:#080404;--dark2:#120C0C;--dark3:#1C1010;
-  --smoke:#F2E8D9;--smoke2:#D9C9B0;--muted:#8C7A65;
-  --nav-h:72px;
-}
-html{scroll-behavior:smooth}
-body{font-family:"Cormorant Garamond",serif;background:var(--dark);color:var(--smoke);overflow-x:hidden}
-::-webkit-scrollbar{width:3px}::-webkit-scrollbar-thumb{background:var(--gold)}
- 
-/* NAV */
-nav{
-  position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:9999;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:0 2.5rem;
-  background:#0a0404;
-  border-bottom:1px solid rgba(201,168,76,0.22);
-}
-.nb{display:flex;align-items:center;gap:12px;text-decoration:none;cursor:pointer}
-.nb img{width:44px;height:44px;border-radius:50%;border:2px solid var(--gold);object-fit:cover;flex-shrink:0;display:block}
-.nb-t{display:flex;flex-direction:column}
-.nb-name{font-family:"Cinzel",serif;font-size:.95rem;letter-spacing:.14em;color:var(--gold);line-height:1}
-.nb-sub{font-family:"DM Sans",sans-serif;font-size:.58rem;letter-spacing:.07em;color:var(--smoke2);margin-top:2px;line-height:1}
-.nl{display:flex;gap:2.2rem;list-style:none;align-items:center}
-.nl a{font-family:"Cinzel",serif;font-size:.63rem;letter-spacing:.2em;color:var(--smoke2);text-decoration:none;text-transform:uppercase;padding:4px 0;position:relative;transition:color .25s}
-.nl a::after{content:"";position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--gold);transition:width .25s}
-.nl a:hover{color:var(--gold)}
-.nl a:hover::after{width:100%}
-.nl a.on{color:var(--gold)}
-.nl a.on::after{width:100%}
- 
-/* page wrapper */
-.pw{padding-top:var(--nav-h)}
- 
-/* SECTION COMMONS */
-.sw{padding:4rem 2rem 5rem}
-.sh{text-align:center;margin-bottom:3.5rem}
-.sk{font-family:"Cinzel",serif;font-size:.6rem;letter-spacing:.35em;color:var(--gold);text-transform:uppercase;display:flex;align-items:center;justify-content:center;gap:.7rem;margin-bottom:.9rem}
-.sk::before,.sk::after{content:"◆";font-size:.38rem;color:var(--gold);opacity:.6}
-.st{font-family:"Cinzel Decorative",serif;font-size:clamp(1.9rem,4.5vw,3.2rem);background:linear-gradient(135deg,var(--smoke) 10%,var(--gold2) 50%,var(--smoke2) 90%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.sr{width:65px;height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent);margin:1.1rem auto 0}
-.orn{display:flex;align-items:center;justify-content:center;gap:.8rem;margin:3rem auto;max-width:300px;color:rgba(201,168,76,.2);font-size:.45rem;letter-spacing:.3em}
-.orn::before,.orn::after{content:"";flex:1;height:1px;background:rgba(201,168,76,.15)}
- 
-/* FOOTER */
-footer{background:#050202;border-top:1px solid rgba(201,168,76,.15);padding:2.5rem 3rem;display:flex;flex-direction:column;align-items:center;gap:1.2rem}
-.fb{display:flex;align-items:center;gap:12px}
-.fb img{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--gold);object-fit:cover;opacity:.85}
-.fb-n{font-family:"Cinzel Decorative",serif;font-size:1.3rem;color:var(--gold);letter-spacing:.07em}
-.fn{display:flex;gap:1.8rem}
-.fn a{font-family:"Cinzel",serif;font-size:.6rem;letter-spacing:.2em;color:var(--muted);text-decoration:none;text-transform:uppercase;transition:color .2s}
-.fn a:hover{color:var(--gold)}
-.fc{font-family:"DM Sans",sans-serif;font-size:.66rem;color:var(--muted);letter-spacing:.07em;text-align:center}
- 
-@media(max-width:768px){
-  nav{padding:0 1rem}
-  .nb img{width:38px;height:38px}
-  .nb-name{font-size:.8rem}
-  .nl{gap:1rem}
-  .nl a{font-size:.55rem}
-  footer{padding:2rem 1.5rem}
-}
- 
-/* ── COMMITTEE GRID ── */
-.tg{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
-  gap:3px;
-  max-width:1100px;
-  margin:0 auto 4.5rem
-}
- 
-/* each card */
-.tc{
-  padding:1.4rem 1.7rem 1.7rem;
-  background:var(--dark2);
-  border:1px solid rgba(201,168,76,.09);
-  position:relative;overflow:hidden;
-  transition:border-color .25s,transform .25s;
-}
-.tc:hover{border-color:rgba(201,168,76,.32);transform:translateY(-2px)}
-.tc::after{
-  content:"";position:absolute;bottom:0;left:0;right:0;height:1px;
-  background:linear-gradient(to right,transparent,var(--gold),transparent);
-  opacity:0;transition:opacity .25s
-}
-.tc:hover::after{opacity:1}
- 
-/* serial number watermark */
-.tn{
-  position:absolute;top:1.2rem;right:1.4rem;
-  font-family:"Cinzel Decorative",serif;font-size:2.1rem;
-  color:rgba(201,168,76,.06);line-height:1
-}
- 
-/* role label */
-.tr{
-  font-family:"Cinzel",serif;font-size:.58rem;letter-spacing:.22em;
-  color:var(--gold);text-transform:uppercase;margin-bottom:.6rem
-}
- 
-/* member row: avatar + name */
-.tm-row{
-  display:flex;
-  align-items:center;
-  gap:.85rem;
-}
- 
-/* circular photo */
-.tm-avatar{
-  width:44px;height:44px;
-  border-radius:50%;
-  border:1.5px solid rgba(201,168,76,.55);
-  object-fit:cover;
-  flex-shrink:0;
-  background:var(--dark3);
-  /* placeholder ring glow */
-  box-shadow:0 0 0 3px rgba(201,168,76,.08);
-  transition:border-color .25s,box-shadow .25s;
-}
-.tc:hover .tm-avatar{
-  border-color:var(--gold);
-  box-shadow:0 0 0 4px rgba(201,168,76,.18);
-}
- 
-/* placeholder icon shown when no src */
-.tm-avatar-wrap{
-  position:relative;width:44px;height:44px;flex-shrink:0;
-}
-.tm-avatar-wrap .tm-avatar{
-  width:100%;height:100%;
-}
-/* silhouette svg overlay when image fails / is placeholder */
-.tm-avatar-wrap::before{
-  content:"";
-  position:absolute;inset:0;
-  border-radius:50%;
-  background:
-    radial-gradient(circle at 50% 38%, rgba(201,168,76,.18) 18%, transparent 19%),
-    radial-gradient(ellipse 60% 50% at 50% 80%, rgba(201,168,76,.13) 40%, transparent 41%);
-  pointer-events:none;
-}
- 
-/* name text */
-.tm{
-  font-family:"Cormorant Garamond",serif;
-  font-size:1.1rem;font-weight:600;
-  color:var(--smoke);line-height:1.35;
-}
- 
-/* ── CONTACT BOX ── */
-.cb{max-width:640px;margin:0 auto;border:1px solid rgba(201,168,76,.2);padding:3rem 2rem;text-align:center;background:linear-gradient(135deg,rgba(122,28,28,.05),rgba(201,168,76,.03))}
-.cb img{width:80px;height:80px;border-radius:50%;border:2px solid var(--gold);object-fit:cover;margin-bottom:1.2rem}
-.cb h3{font-family:"Cinzel Decorative",serif;font-size:1.1rem;color:var(--gold);letter-spacing:.09em;margin-bottom:.3rem}
-.cb .cs{font-family:"DM Sans",sans-serif;font-size:.66rem;letter-spacing:.14em;color:var(--muted);text-transform:uppercase;margin-bottom:1.8rem}
-.cinfo{font-size:1.05rem;color:var(--smoke2);line-height:2.1}
-.csoc{display:flex;justify-content:center;gap:1.8rem;margin-top:1.5rem}
-.csoc a{font-family:"Cinzel",serif;font-size:.6rem;letter-spacing:.2em;color:var(--gold);text-decoration:none;text-transform:uppercase;transition:opacity .2s}
-.csoc a:hover{opacity:.65}
- 
-</style>
-</head>
+  <!DOCTYPE html>
+  <html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact — Vibrations 2027</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap"
+      rel="stylesheet">
+    <style>
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box
+      }
+
+      :root {
+        --gold: #C9A84C;
+        --gold2: #E8C96B;
+        --crimson: #7A1C1C;
+        --dark: #080404;
+        --dark2: #120C0C;
+        --dark3: #1C1010;
+        --smoke: #F2E8D9;
+        --smoke2: #D9C9B0;
+        --muted: #8C7A65;
+        --nav-h: 72px;
+      }
+
+      html {
+        scroll-behavior: smooth
+      }
+
+      body {
+        font-family: "Cormorant Garamond", serif;
+        background: var(--dark);
+        color: var(--smoke);
+        overflow-x: hidden
+      }
+
+      ::-webkit-scrollbar {
+        width: 3px
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: var(--gold)
+      }
+
+      /* NAV */
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: var(--nav-h);
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 2.5rem;
+        background: #0a0404;
+        border-bottom: 1px solid rgba(201, 168, 76, 0.22);
+      }
+
+      .nb {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+        cursor: pointer
+      }
+
+      .nb img {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        border: 2px solid var(--gold);
+        object-fit: cover;
+        flex-shrink: 0;
+        display: block
+      }
+
+      .nb-t {
+        display: flex;
+        flex-direction: column
+      }
+
+      .nb-name {
+        font-family: "Cinzel", serif;
+        font-size: .95rem;
+        letter-spacing: .14em;
+        color: var(--gold);
+        line-height: 1
+      }
+
+      .nb-sub {
+        font-family: "DM Sans", sans-serif;
+        font-size: .58rem;
+        letter-spacing: .07em;
+        color: var(--smoke2);
+        margin-top: 2px;
+        line-height: 1
+      }
+
+      .nl {
+        display: flex;
+        gap: 2.2rem;
+        list-style: none;
+        align-items: center
+      }
+
+      .nl a {
+        font-family: "Cinzel", serif;
+        font-size: .63rem;
+        letter-spacing: .2em;
+        color: var(--smoke2);
+        text-decoration: none;
+        text-transform: uppercase;
+        padding: 4px 0;
+        position: relative;
+        transition: color .25s
+      }
+
+      .nl a::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background: var(--gold);
+        transition: width .25s
+      }
+
+      .nl a:hover {
+        color: var(--gold)
+      }
+
+      .nl a:hover::after {
+        width: 100%
+      }
+
+      .nl a.on {
+        color: var(--gold)
+      }
+
+      .nl a.on::after {
+        width: 100%
+      }
+
+      /* page wrapper */
+      .pw {
+        padding-top: var(--nav-h)
+      }
+
+      /* SECTION COMMONS */
+      .sw {
+        padding: 4rem 2rem 5rem
+      }
+
+      .sh {
+        text-align: center;
+        margin-bottom: 3.5rem
+      }
+
+      .sk {
+        font-family: "Cinzel", serif;
+        font-size: .6rem;
+        letter-spacing: .35em;
+        color: var(--gold);
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: .7rem;
+        margin-bottom: .9rem
+      }
+
+      .sk::before,
+      .sk::after {
+        content: "◆";
+        font-size: .38rem;
+        color: var(--gold);
+        opacity: .6
+      }
+
+      .st {
+        font-family: "Cinzel Decorative", serif;
+        font-size: clamp(1.9rem, 4.5vw, 3.2rem);
+        background: linear-gradient(135deg, var(--smoke) 10%, var(--gold2) 50%, var(--smoke2) 90%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text
+      }
+
+      .sr {
+        width: 65px;
+        height: 1px;
+        background: linear-gradient(to right, transparent, var(--gold), transparent);
+        margin: 1.1rem auto 0
+      }
+
+      .orn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: .8rem;
+        margin: 3rem auto;
+        max-width: 300px;
+        color: rgba(201, 168, 76, .2);
+        font-size: .45rem;
+        letter-spacing: .3em
+      }
+
+      .orn::before,
+      .orn::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: rgba(201, 168, 76, .15)
+      }
+
+      /* FOOTER */
+      footer {
+        background: #050202;
+        border-top: 1px solid rgba(201, 168, 76, .15);
+        padding: 2.5rem 3rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.2rem
+      }
+
+      .fb {
+        display: flex;
+        align-items: center;
+        gap: 12px
+      }
+
+      .fb img {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        border: 1.5px solid var(--gold);
+        object-fit: cover;
+        opacity: .85
+      }
+
+      .fb-n {
+        font-family: "Cinzel Decorative", serif;
+        font-size: 1.3rem;
+        color: var(--gold);
+        letter-spacing: .07em
+      }
+
+      .fn {
+        display: flex;
+        gap: 1.8rem
+      }
+
+      .fn a {
+        font-family: "Cinzel", serif;
+        font-size: .6rem;
+        letter-spacing: .2em;
+        color: var(--muted);
+        text-decoration: none;
+        text-transform: uppercase;
+        transition: color .2s
+      }
+
+      .fn a:hover {
+        color: var(--gold)
+      }
+
+      .fc {
+        font-family: "DM Sans", sans-serif;
+        font-size: .66rem;
+        color: var(--muted);
+        letter-spacing: .07em;
+        text-align: center
+      }
+
+      @media(max-width:768px) {
+        nav {
+          padding: 0 1rem
+        }
+
+        .nb img {
+          width: 38px;
+          height: 38px
+        }
+
+        .nb-name {
+          font-size: .8rem
+        }
+
+        .nl {
+          gap: 1rem
+        }
+
+        .nl a {
+          font-size: .55rem
+        }
+
+        footer {
+          padding: 2rem 1.5rem
+        }
+      }
+
+      /* ── COMMITTEE GRID ── */
+      .tg {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+        gap: 3px;
+        max-width: 1100px;
+        margin: 0 auto 4.5rem
+      }
+
+      /* each card */
+      .tc {
+        padding: 1.4rem 1.7rem 1.7rem;
+        background: var(--dark2);
+        border: 1px solid rgba(201, 168, 76, .09);
+        position: relative;
+        overflow: hidden;
+        transition: border-color .25s, transform .25s;
+      }
+
+      .tc:hover {
+        border-color: rgba(201, 168, 76, .32);
+        transform: translateY(-2px)
+      }
+
+      .tc::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(to right, transparent, var(--gold), transparent);
+        opacity: 0;
+        transition: opacity .25s
+      }
+
+      .tc:hover::after {
+        opacity: 1
+      }
+
+      /* serial number watermark */
+      .tn {
+        position: absolute;
+        top: 1.2rem;
+        right: 1.4rem;
+        font-family: "Cinzel Decorative", serif;
+        font-size: 2.1rem;
+        color: rgba(201, 168, 76, .06);
+        line-height: 1
+      }
+
+      /* role label */
+      .tr {
+        font-family: "Cinzel", serif;
+        font-size: .58rem;
+        letter-spacing: .22em;
+        color: var(--gold);
+        text-transform: uppercase;
+        margin-bottom: .6rem
+      }
+
+      /* member row: avatar + name */
+      .tm-row {
+        display: flex;
+        align-items: center;
+        gap: .85rem;
+      }
+
+      /* circular photo */
+      .tm-avatar {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        border: 1.5px solid rgba(201, 168, 76, .55);
+        object-fit: cover;
+        flex-shrink: 0;
+        background: var(--dark3);
+        /* placeholder ring glow */
+        box-shadow: 0 0 0 3px rgba(201, 168, 76, .08);
+        transition: border-color .25s, box-shadow .25s;
+      }
+
+      .tc:hover .tm-avatar {
+        border-color: var(--gold);
+        box-shadow: 0 0 0 4px rgba(201, 168, 76, .18);
+      }
+
+      /* placeholder icon shown when no src */
+      .tm-avatar-wrap {
+        position: relative;
+        width: 44px;
+        height: 44px;
+        flex-shrink: 0;
+      }
+
+      .tm-avatar-wrap .tm-avatar {
+        width: 100%;
+        height: 100%;
+      }
+
+      /* silhouette svg overlay when image fails / is placeholder */
+      .tm-avatar-wrap::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        background:
+          radial-gradient(circle at 50% 38%, rgba(201, 168, 76, .18) 18%, transparent 19%),
+          radial-gradient(ellipse 60% 50% at 50% 80%, rgba(201, 168, 76, .13) 40%, transparent 41%);
+        pointer-events: none;
+      }
+
+      /* name text */
+      .tm {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--smoke);
+        line-height: 1.35;
+      }
+
+      /* ── CONTACT BOX ── */
+      .cb {
+        max-width: 640px;
+        margin: 0 auto;
+        border: 1px solid rgba(201, 168, 76, .2);
+        padding: 3rem 2rem;
+        text-align: center;
+        background: linear-gradient(135deg, rgba(122, 28, 28, .05), rgba(201, 168, 76, .03))
+      }
+
+      .cb img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        border: 2px solid var(--gold);
+        object-fit: cover;
+        margin-bottom: 1.2rem
+      }
+
+      .cb h3 {
+        font-family: "Cinzel Decorative", serif;
+        font-size: 1.1rem;
+        color: var(--gold);
+        letter-spacing: .09em;
+        margin-bottom: .3rem
+      }
+
+      .cb .cs {
+        font-family: "DM Sans", sans-serif;
+        font-size: .66rem;
+        letter-spacing: .14em;
+        color: var(--muted);
+        text-transform: uppercase;
+        margin-bottom: 1.8rem
+      }
+
+      .cinfo {
+        font-size: 1.05rem;
+        color: var(--smoke2);
+        line-height: 2.1
+      }
+
+      .csoc {
+        display: flex;
+        justify-content: center;
+        gap: 1.8rem;
+        margin-top: 1.5rem
+      }
+
+      .csoc a {
+        font-family: "Cinzel", serif;
+        font-size: .6rem;
+        letter-spacing: .2em;
+        color: var(--gold);
+        text-decoration: none;
+        text-transform: uppercase;
+        transition: opacity .2s
+      }
+
+      .csoc a:hover {
+        opacity: .65
+      }
+    </style>
+  </head>
+
 <body>
-<nav>
-  <a class="nb" href="index.html">
-    <img src="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/wAARCABkAGQDASIAAhEBAxEB/8QAHAABAAIDAQEBAAAAAAAAAAAAAAQFAgMGAQf/xAA3EAACAQMCBAMGBAYDAQAAAAAAAQIDBBEFITESQVFhBhMicYGRobEUFTJSwdHh8CNT8SRCY//EABoBAAMBAQEBAAAAAAAAAAAAAAIDBAEFBgD/xAAkEQACAgICAQUBAQAAAAAAAAAAAQIRAyESMUFREyJxYTP/2Q==" alt="Anchorage Logo">
-    <div class="nb-t">
-      <span class="nb-name">VIBRATIONS</span>
-      <span class="nb-sub">Anchorage · Shivaji College</span>
-    </div>
-  </a>
-  <ul class="nl">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="gallery.html">Gallery</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="contact.html" class="on">Contact</a></li>
-  </ul>
-</nav>
- 
-<div class="pw">
-<div class="sw" style="background:linear-gradient(180deg,var(--dark),var(--dark2))">
-  <div class="sh">
-    <div class="sk">The Team</div>
-    <h2 class="st">Anchorage Committee</h2>
-    <div class="sr"></div>
-  </div>
-  <p style="text-align:center;font-size:1.1rem;color:var(--smoke2);max-width:580px;margin:0 auto 3.2rem;line-height:1.8">The dedicated team behind Vibrations — pouring passion into making every edition extraordinary.</p>
- 
-  <!-- 
+  <nav>
+    <a class="nb" href="index.html">
+      <img
+        src="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/wAARCABkAGQDASIAAhEBAxEB/8QAHAABAAIDAQEBAAAAAAAAAAAAAAQFAgMGAQf/xAA3EAACAQMCBAMGBAYDAQAAAAAAAQIDBBEFITESQVFhBhMicYGRobEUFTJSwdHh8CNT8SRCY//EABoBAAMBAQEBAAAAAAAAAAAAAAIDBAEFBgD/xAAkEQACAgICAQUBAQAAAAAAAAAAAQIRAyESMUFREyJxYTP/2Q=="
+        alt="Anchorage Logo">
+      <div class="nb-t">
+        <span class="nb-name">VIBRATIONS</span>
+        <span class="nb-sub">Anchorage · Shivaji College</span>
+      </div>
+    </a>
+    <ul class="nl">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html" class="on">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="pw">
+    <div class="sw" style="background:linear-gradient(180deg,var(--dark),var(--dark2))">
+      <div class="sh">
+        <div class="sk">The Team</div>
+        <h2 class="st">Anchorage Committee</h2>
+        <div class="sr"></div>
+      </div>
+      <p
+        style="text-align:center;font-size:1.1rem;color:var(--smoke2);max-width:580px;margin:0 auto 3.2rem;line-height:1.8">
+        The dedicated team behind Vibrations — pouring passion into making every edition extraordinary.</p>
+
+      <!-- 
     HOW TO ADD IMAGES:
     Replace  src="images/member-name.jpg"  with your uploaded image path.
     Each .tm-avatar has a data-name attribute for reference.
     Keep width/height at 44px — they will be cropped to circle automatically.
   -->
- 
-  <div class="tg">
- 
-    <div class="tc">
-      <div class="tn">01</div>
-      <div class="tr">Convener — Cultural Committee</div>
-      <div class="tm-row">
-        <div class="tm-avatar-wrap">
-          <img class="tm-avatar" src="" alt="Prof. Deepika Yadav" onerror="this.src=''">
+
+      <div class="tg">
+
+        <div class="tc">
+          <div class="tn">01</div>
+          <div class="tr">Convener — Cultural Committee</div>
+          <div class="tm-row">
+            <div class="tm-avatar-wrap">
+              <img class="tm-avatar" src="" alt="Prof. Deepika Yadav" onerror="this.src=''">
+            </div>
+            <div class="tm">Prof. Deepika Yadav</div>
+          </div>
         </div>
-        <div class="tm">Prof. Deepika Yadav</div>
-      </div>
-    </div>
- 
-    <div class="tc">
-      <div class="tn">02</div>
-      <div class="tr">President</div>
-      <div class="tm-row">
-        <div class="tm-avatar-wrap">
-          <img class="tm-avatar" src="" alt="Akshat Wallia" onerror="this.src=''">
+
+        <div class="tc">
+          <div class="tn">02</div>
+          <div class="tr">President</div>
+          <div class="tm-row">
+            <div class="tm-avatar-wrap">
+              <img class="tm-avatar" src="" alt="Akshat Wallia" onerror="this.src=''">
+            </div>
+            <div class="tm">Akshat Wallia</div>
+          </div>
         </div>
-        <div class="tm">Akshat Wallia</div>
-      </div>
-    </div>
- 
-    <div class="tc">
-      <div class="tn">03</div>
-      <div class="tr">Vice President</div>
-      <div class="tm-row">
-        <div class="tm-avatar-wrap">
-          <img class="tm-avatar" src="" alt="Akshra Verma & Aditya Kumar" onerror="this.src=''">
+
+        <div class="tc">
+          <div class="tn">03</div>
+          <div class="tr">Vice President</div>
+          <div class="tm-row">
+            <div class="tm-avatar-wrap">
+              <img class="tm-avatar" src="" alt="Akshra Verma & Aditya Kumar" onerror="this.src=''">
+            </div>
+            <div class="tm">Akshra Verma &amp; Aditya Kumar</div>
+          </div>
         </div>
-        <div class="tm">Akshra Verma &amp; Aditya Kumar</div>
-      </div>
-    </div>
- 
-    <div class="tc">
-      <div class="tn">04</div>
-      <div class="tr">General Secretary</div>
-      <div class="tm-row">
-        <div class="tm-avatar-wrap">
-          <img class="tm-avatar" src="" alt="Sayank Dhunna" onerror="this.src=''">
+
+        <div class="tc">
+          <div class="tn">04</div>
+          <div class="tr">General Secretary</div>
+          <div class="tm-row">
+            <div class="tm-avatar-wrap">
+              <img class="tm-avatar" src="" alt="Sayank Dhunna" onerror="this.src=''">
+            </div>
+            <div class="tm">Sayank Dhunna</div>
+          </div>
         </div>
-        <div class="tm">Sayank Dhunna</div>
-      </div>
-    </div>
- 
-    <div class="tc">
-      <div class="tn">05</div>
-      <div class="tr">Treasurer</div>
-      <div class="tm-row">
-        <div class="tm-avatar-wrap">
-          <img class="tm-avatar" src="" alt="Lakshya Khanna" onerror="this.src=''">
+
+        <div class="tc">
+          <div class="tn">05</div>
+          <div class="tr">Treasurer</div>
+          <div class="tm-row">
+            <div class="tm-avatar-wrap">
+              <img class="tm-avatar" src="" alt="Lakshya Khanna" onerror="this.src=''">
+            </div>
+            <div class="tm">Lakshya Khanna</div>
+          </div>
         </div>
-        <div class="tm">Lakshya Khanna</div>
-      </div>
-    </div>
- 
-    <div class="tc">
-      <div class="tn">06</div>
-      <div class="tr">Social Media Head</div>
-      <div class="tm-row">
-        <div class="tm-avatar-wrap">
-          <img class="tm-avatar" src="" alt="Simran & Hiya" onerror="this.src=''">
+
+        <div class="tc">
+          <div class="tn">06</div>
+          <div class="tr">Social Media Head</div>
+          <div class="tm-row">
+            <div class="tm-avatar-wrap">
+              <img class="tm-avatar" src="" alt="Simran & Hiya" onerror="this.src=''">
+            </div>
+            <div class="tm">Simran &amp; Hiya</div>
+          </div>
         </div>
-        <div class="tm">Simran &amp; Hiya</div>
-      </div>
-    </div>
- 
-    <div class="tc">
-      <div class="tn">07</div>
-      <div class="tr">Hospitality Head</div>
-      <div class="tm-row">
-        <div class="tm-avatar-wrap">
-          <img class="tm-avatar" src="" alt="Saransh Murgai" onerror="this.src=''">
+
+        <div class="tc">
+          <div class="tn">07</div>
+          <div class="tr">Hospitality Head</div>
+          <div class="tm-row">
+            <div class="tm-avatar-wrap">
+              <img class="tm-avatar" src="" alt="Saransh Murgai" onerror="this.src=''">
+            </div>
+            <div class="tm">Saransh Murgai</div>
+          </div>
         </div>
-        <div class="tm">Saransh Murgai</div>
-      </div>
-    </div>
- 
-    <div class="tc">
-      <div class="tn">08</div>
-      <div class="tr">Editorial Head</div>
-      <div class="tm-row">
-        <div class="tm-avatar-wrap">
-          <img class="tm-avatar" src="" alt="Shailja Kurmi & Anshika Sood" onerror="this.src=''">
+
+        <div class="tc">
+          <div class="tn">08</div>
+          <div class="tr">Editorial Head</div>
+          <div class="tm-row">
+            <div class="tm-avatar-wrap">
+              <img class="tm-avatar" src="" alt="Shailja Kurmi & Anshika Sood" onerror="this.src=''">
+            </div>
+            <div class="tm">Shailja Kurmi &amp; Anshika Sood</div>
+          </div>
         </div>
-        <div class="tm">Shailja Kurmi &amp; Anshika Sood</div>
-      </div>
-    </div>
- 
-    <div class="tc">
-      <div class="tn">09</div>
-      <div class="tr">Technical Head</div>
-      <div class="tm-row">
-        <div class="tm-avatar-wrap">
-          <img class="tm-avatar" src="" alt="Rohit & Swaraj" onerror="this.src=''">
+
+        <div class="tc">
+          <div class="tn">09</div>
+          <div class="tr">Technical Head</div>
+          <div class="tm-row">
+            <div class="tm-avatar-wrap">
+              <img class="tm-avatar" src="" alt="Rohit & Swaraj" onerror="this.src=''">
+            </div>
+            <div class="tm">Rohit &amp; Swaraj</div>
+          </div>
         </div>
-        <div class="tm">Rohit &amp; Swaraj</div>
-      </div>
-    </div>
- 
-    <div class="tc">
-      <div class="tn">10</div>
-      <div class="tr">Editorial Head</div>
-      <div class="tm-row">
-        <div class="tm-avatar-wrap">
-          <img class="tm-avatar" src="" alt="Yukti Dhingra & Lakshay Hooda" onerror="this.src=''">
+
+        <div class="tc">
+          <div class="tn">10</div>
+          <div class="tr">Editorial Head</div>
+          <div class="tm-row">
+            <div class="tm-avatar-wrap">
+              <img class="tm-avatar" src="" alt="Yukti Dhingra & Lakshay Hooda" onerror="this.src=''">
+            </div>
+            <div class="tm">Yukti Dhingra &amp; Lakshay Hooda</div>
+          </div>
         </div>
-        <div class="tm">Yukti Dhingra &amp; Lakshay Hooda</div>
-      </div>
-    </div>
- 
-    <div class="tc">
-      <div class="tn">11</div>
-      <div class="tr">Event Management Head</div>
-      <div class="tm-row">
-        <div class="tm-avatar-wrap">
-          <img class="tm-avatar" src="" alt="Utkarsh Verma & Rahul Dwiwedi" onerror="this.src=''">
+
+        <div class="tc">
+          <div class="tn">11</div>
+          <div class="tr">Event Management Head</div>
+          <div class="tm-row">
+            <div class="tm-avatar-wrap">
+              <img class="tm-avatar" src="" alt="Utkarsh Verma & Rahul Dwiwedi" onerror="this.src=''">
+            </div>
+            <div class="tm">Utkarsh Verma &amp; Rahul Dwiwedi</div>
+          </div>
         </div>
-        <div class="tm">Utkarsh Verma &amp; Rahul Dwiwedi</div>
-      </div>
-    </div>
- 
-    <div class="tc">
-      <div class="tn">12</div>
-      <div class="tr">Public Relation Head</div>
-      <div class="tm-row">
-        <div class="tm-avatar-wrap">
-          <img class="tm-avatar" src="" alt="Shreya Sheetal & Stavya Bhalla" onerror="this.src=''">
+
+        <div class="tc">
+          <div class="tn">12</div>
+          <div class="tr">Public Relation Head</div>
+          <div class="tm-row">
+            <div class="tm-avatar-wrap">
+              <img class="tm-avatar" src="" alt="Shreya Sheetal & Stavya Bhalla" onerror="this.src=''">
+            </div>
+            <div class="tm">Shreya Sheetal &amp; Stavya Bhalla</div>
+          </div>
         </div>
-        <div class="tm">Shreya Sheetal &amp; Stavya Bhalla</div>
-      </div>
-    </div>
- 
-    <div class="tc">
-      <div class="tn">13</div>
-      <div class="tr">Student Coordinator Head</div>
-      <div class="tm-row">
-        <div class="tm-avatar-wrap">
-          <img class="tm-avatar" src="" alt="Garvit Satija & Vikrant Tiwari" onerror="this.src=''">
+
+        <div class="tc">
+          <div class="tn">13</div>
+          <div class="tr">Student Coordinator Head</div>
+          <div class="tm-row">
+            <div class="tm-avatar-wrap">
+              <img class="tm-avatar" src="" alt="Garvit Satija & Vikrant Tiwari" onerror="this.src=''">
+            </div>
+            <div class="tm">Garvit Satija &amp; Vikrant Tiwari</div>
+          </div>
         </div>
-        <div class="tm">Garvit Satija &amp; Vikrant Tiwari</div>
+
+      </div><!-- /.tg -->
+
+      <div class="cb">
+        <img src="videos/anchorage.jpg" alt="Anchorage">
+        <h3>Anchorage</h3>
+        <div class="cs">The Cultural Committee · Shivaji College · Delhi — 110027</div>
+        <div class="cinfo">📧 vibrations@shivajicollege.ac.in<br>📍 Raja Garden, New Delhi — 110027</div>
+        <div class="csoc">
+          <a href="https://www.instagram.com/shivaji_cultural?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+            target="_blank">Instagram</a>
+          <a href="https://www.facebook.com/anchorageshivaji" target="_blank">Facebook</a>
+          <a href="https://www.youtube.com/@shivajicollege1961" target="_blank">YouTube</a>
+        </div>
       </div>
-    </div>
- 
-  </div><!-- /.tg -->
- 
-  <div class="cb">
-    <img src="" alt="Anchorage">
-    <h3>Anchorage</h3>
-    <div class="cs">The Cultural Committee · Shivaji College · Delhi — 110027</div>
-    <div class="cinfo">📧 vibrations@shivajicollege.ac.in<br>📍 Raja Garden, New Delhi — 110027</div>
-    <div class="csoc">
-      <a href="https://www.instagram.com/shivaji_cultural?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">Instagram</a>
-      <a href="https://www.facebook.com/anchorageshivaji" target="_blank">Facebook</a>
-      <a href="https://www.youtube.com/@shivajicollege1961" target="_blank">YouTube</a>
+      <div class="orn">◆ &nbsp; ◆ &nbsp; ◆</div>
     </div>
   </div>
-  <div class="orn">◆ &nbsp; ◆ &nbsp; ◆</div>
-</div>
-</div>
- 
-<footer>
-  <div class="fb"><img src="" alt="Anchorage"><span class="fb-n">VIBRATIONS 2027</span></div>
-  <nav class="fn">
-    <a href="index.html">Home</a>
-    <a href="gallery.html">Gallery</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-  <div class="fc">Organised by Anchorage — The Cultural Committee of Shivaji College</div>
-</footer>
+
+  <footer>
+    <div class="fb"><img src="videos/anchorage.jpg" alt="Anchorage"><span class="fb-n">VIBRATIONS 2027</span></div>
+    <nav class="fn">
+      <a href="index.html">Home</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="fc">Organised by Anchorage — The Cultural Committee of Shivaji College</div>
+  </footer>
 </body>
+
 </html>
- 
