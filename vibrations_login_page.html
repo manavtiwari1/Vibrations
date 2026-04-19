@@ -1,428 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
 
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;1,400&family=DM+Sans:wght@300;400&display=swap');
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login · VIBRATIONS 2027</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;1,400&family=DM+Sans:wght@300;400&display=swap');
 
-  .vib-login-root {
-    min-height: 520px;
-    background: radial-gradient(ellipse 90% 80% at 50% 50%, #2d1010 0%, #120808 50%, #080404 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 2.5rem 1rem;
-    position: relative;
-    overflow: hidden;
-    border-radius: 12px;
-  }
-  .vib-hd {
-    position: absolute;
-    inset: 0;
-    background-image:
-      repeating-linear-gradient(45deg, rgba(201,168,76,.025) 0, rgba(201,168,76,.025) 1px, transparent 1px, transparent 40px),
-      repeating-linear-gradient(-45deg, rgba(201,168,76,.025) 0, rgba(201,168,76,.025) 1px, transparent 1px, transparent 40px);
-    pointer-events: none;
-  }
-  .vib-ring1 {
-    position: absolute;
-    width: 500px; height: 500px;
-    border-radius: 50%;
-    border: 1px solid rgba(201,168,76,.06);
-    top: 50%; left: 50%;
-    transform: translate(-50%,-50%);
-    animation: vib-rot 60s linear infinite;
-    pointer-events: none;
-  }
-  .vib-ring2 {
-    position: absolute;
-    width: 750px; height: 750px;
-    border-radius: 50%;
-    border: 1px solid rgba(201,168,76,.03);
-    top: 50%; left: 50%;
-    transform: translate(-50%,-50%);
-    animation: vib-rot 90s linear infinite reverse;
-    pointer-events: none;
-  }
-  @keyframes vib-rot { to { transform: translate(-50%,-50%) rotate(360deg); } }
+    :root {
+      --gold: #C9A84C;
+      --gold2: #E8C96B;
+      --crimson: #7A1C1C;
+      --dark: #080404;
+      --dark2: #120C0C;
+      --dark3: #1C1010;
+      --smoke: #F2E8D9;
+      --smoke2: #D9C9B0;
+      --muted: #8C7A65;
+    }
 
-  .vib-card {
-    position: relative;
-    z-index: 10;
-    width: 100%;
-    max-width: 400px;
-    background: rgba(255,255,255,.03);
-    border: 1px solid rgba(201,168,76,.2);
-    border-radius: 2px;
-    padding: 2.5rem 2rem 2rem;
-    box-shadow: inset 0 1px 0 rgba(201,168,76,.07);
-  }
-  .vib-card::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 2rem; right: 2rem;
-    height: 1px;
-    background: linear-gradient(to right, transparent, rgba(201,168,76,.45), transparent);
-  }
+    body {
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(ellipse 90% 80% at 50% 50%, #2d1010 0%, #120808 50%, #080404 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: "Cormorant Garamond", serif;
+      color: var(--smoke);
+    }
 
-  .vib-logo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 1.8rem;
-  }
-  .vib-logo img {
-    width: 60px; height: 60px;
-    border-radius: 50%;
-    border: 2px solid rgba(201,168,76,.7);
-    object-fit: cover;
-    margin-bottom: 1rem;
-  }
-  .vib-eyebrow {
-    font-family: 'Cinzel', serif;
-    font-size: .55rem;
-    letter-spacing: .35em;
-    color: rgba(201,168,76,.6);
-    text-transform: uppercase;
-    margin-bottom: .5rem;
-  }
-  .vib-title {
-    font-family: 'Cinzel Decorative', serif;
-    font-size: 1.6rem;
-    font-weight: 700;
-    background: linear-gradient(135deg, #fff 10%, #E8C96B 50%, #C9A84C 90%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    letter-spacing: .07em;
-    line-height: 1;
-    margin-bottom: .2rem;
-  }
-  .vib-sub {
-    font-family: 'DM Sans', sans-serif;
-    font-size: .62rem;
-    letter-spacing: .08em;
-    color: rgba(242,232,217,.35);
-    margin-top: .4rem;
-  }
-  .vib-divider {
-    width: 50px; height: 1px;
-    background: linear-gradient(to right, transparent, rgba(201,168,76,.4), transparent);
-    margin: 1.2rem auto 1.6rem;
-  }
+    /* Logo Header */
+    .login-logo {
+      margin-bottom: 2rem;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      animation: fadeInDown 1s ease-out;
+    }
 
-  .vib-tabs {
-    display: flex;
-    border: 1px solid rgba(201,168,76,.15);
-    margin-bottom: 1.6rem;
-  }
-  .vib-tab {
-    flex: 1;
-    font-family: 'Cinzel', serif;
-    font-size: .58rem;
-    letter-spacing: .18em;
-    text-transform: uppercase;
-    color: rgba(217,201,176,.45);
-    background: transparent;
-    border: none;
-    padding: .6rem .5rem;
-    cursor: pointer;
-    transition: color .2s, background .2s;
-  }
-  .vib-tab.active {
-    color: #E8C96B;
-    background: rgba(201,168,76,.08);
-  }
-  .vib-tab + .vib-tab {
-    border-left: 1px solid rgba(201,168,76,.15);
-  }
+    .login-logo img {
+      height: 60px;
+      width: auto;
+      filter: drop-shadow(0 0 10px rgba(201, 168, 76, 0.3));
+    }
 
-  .vib-field {
-    margin-bottom: 1rem;
-  }
-  .vib-label {
-    display: block;
-    font-family: 'Cinzel', serif;
-    font-size: .53rem;
-    letter-spacing: .22em;
-    color: rgba(140,122,101,.8);
-    text-transform: uppercase;
-    margin-bottom: .35rem;
-  }
-  .vib-input {
-    width: 100%;
-    box-sizing: border-box;
-    background: rgba(255,255,255,.04);
-    border: 1px solid rgba(201,168,76,.18);
-    color: #F2E8D9;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1rem;
-    padding: .75rem 1rem;
-    outline: none;
-    border-radius: 1px;
-    transition: border-color .2s, background .2s;
-  }
-  .vib-input::placeholder { color: rgba(140,122,101,.55); font-style: italic; }
-  .vib-input:focus {
-    border-color: rgba(201,168,76,.5);
-    background: rgba(201,168,76,.04);
-  }
+    .login-logo .logo-text {
+      display: flex;
+      flex-direction: column;
+    }
 
-  .vib-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1.3rem;
-    margin-top: -.3rem;
-  }
-  .vib-check-label {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: .62rem;
-    color: rgba(140,122,101,.7);
-    cursor: pointer;
-  }
-  .vib-check-label input[type=checkbox] {
-    accent-color: #C9A84C;
-    width: 12px; height: 12px;
-  }
-  .vib-forgot {
-    font-family: 'Cinzel', serif;
-    font-size: .53rem;
-    letter-spacing: .15em;
-    color: rgba(201,168,76,.5);
-    text-transform: uppercase;
-    cursor: pointer;
-    text-decoration: none;
-    transition: color .2s;
-  }
-  .vib-forgot:hover { color: #C9A84C; }
+    .login-logo .nb-name {
+      font-family: "Cinzel Decorative", cursive;
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--gold);
+      line-height: 1;
+    }
 
-  .vib-btn {
-    width: 100%;
-    padding: .85rem 1rem;
-    background: linear-gradient(135deg, rgba(201,168,76,.15) 0%, rgba(201,168,76,.22) 100%);
-    border: 1px solid rgba(201,168,76,.45);
-    color: #E8C96B;
-    font-family: 'Cinzel', serif;
-    font-size: .68rem;
-    letter-spacing: .28em;
-    text-transform: uppercase;
-    cursor: pointer;
-    border-radius: 1px;
-    transition: background .2s, border-color .2s, transform .15s;
-    margin-bottom: .75rem;
-  }
-  .vib-btn:hover {
-    background: linear-gradient(135deg, rgba(201,168,76,.25) 0%, rgba(232,201,107,.3) 100%);
-    border-color: #C9A84C;
-    transform: translateY(-1px);
-  }
-  .vib-btn:active { transform: translateY(0); }
-  .vib-btn-ghost {
-    background: transparent;
-    border: 1px solid rgba(201,168,76,.18);
-    color: rgba(217,201,176,.45);
-    margin-bottom: 0;
-  }
-  .vib-btn-ghost:hover {
-    background: rgba(201,168,76,.06);
-    border-color: rgba(201,168,76,.35);
-    color: rgba(217,201,176,.7);
-  }
+    .login-logo .nb-sub {
+      font-family: "Cinzel", serif;
+      font-size: 0.7rem;
+      letter-spacing: 1px;
+      color: var(--smoke2);
+      opacity: 0.8;
+    }
 
-  .vib-divider-text {
-    display: flex;
-    align-items: center;
-    gap: .8rem;
-    margin: .9rem 0;
-    font-family: 'DM Sans', sans-serif;
-    font-size: .58rem;
-    letter-spacing: .12em;
-    color: rgba(140,122,101,.4);
-  }
-  .vib-divider-text::before, .vib-divider-text::after {
-    content: "";
-    flex: 1;
-    height: 1px;
-    background: rgba(201,168,76,.12);
-  }
+    .vib-login-root {
+      width: 100%;
+      max-width: 450px;
+      background: rgba(18, 12, 12, 0.8);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(201, 168, 76, 0.2);
+      border-radius: 12px;
+      padding: 2.5rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    }
 
-  .vib-msg {
-    font-family: 'DM Sans', sans-serif;
-    font-size: .62rem;
-    text-align: center;
-    padding: .55rem .75rem;
-    border-radius: 1px;
-    margin-top: .75rem;
-    display: none;
-  }
-  .vib-msg.success {
-    display: block;
-    background: rgba(29,158,117,.12);
-    border: 1px solid rgba(29,158,117,.3);
-    color: #5DCAA5;
-  }
-  .vib-msg.error {
-    display: block;
-    background: rgba(226,75,74,.1);
-    border: 1px solid rgba(226,75,74,.25);
-    color: #F09595;
-  }
+    .vib-hd {
+      position: absolute;
+      inset: 0;
+      background-image:
+        repeating-linear-gradient(45deg, rgba(201, 168, 76, .025) 0, rgba(201, 168, 76, .025) 1px, transparent 1px, transparent 40px),
+        repeating-linear-gradient(-45deg, rgba(201, 168, 76, .025) 0, rgba(201, 168, 76, .025) 1px, transparent 1px, transparent 40px);
+      pointer-events: none;
+      opacity: 0.5;
+    }
 
-  .vib-signup-fields { display: none; }
-  .vib-signup-fields.visible { display: block; }
+    .vib-cnt {
+      position: relative;
+      z-index: 1;
+    }
 
-  .vib-footer-note {
-    font-family: 'DM Sans', sans-serif;
-    font-size: .58rem;
-    color: rgba(140,122,101,.4);
-    text-align: center;
-    margin-top: 1.2rem;
-    letter-spacing: .04em;
-  }
-  .vib-footer-note span {
-    color: rgba(201,168,76,.5);
-    cursor: pointer;
-  }
-  .vib-footer-note span:hover { color: #C9A84C; }
-</style>
+    .vib-title-wrap {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
 
-<div class="vib-login-root">
-  <div class="vib-hd"></div>
-  <div class="vib-ring1"></div>
-  <div class="vib-ring2"></div>
+    .vib-top-sub {
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
 
-  <div class="vib-card">
-    <div class="vib-logo">
-      <div class="vib-eyebrow">Shivaji College · Delhi University</div>
-      <div class="vib-title">Vibrations</div>
-      <div class="vib-sub">Annual Cultural Festival · 2027</div>
+    .vib-main-title {
+      font-family: 'Cinzel Decorative', cursive;
+      font-size: 2.2rem;
+      margin: 0.5rem 0;
+      background: linear-gradient(to bottom, var(--gold2), var(--gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: 4px;
+    }
+
+    .vib-btm-sub {
+      font-size: 0.9rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    .vib-tabs {
+      display: flex;
+      border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+      margin-bottom: 2rem;
+    }
+
+    .vib-tab {
+      flex: 1;
+      padding: 1rem;
+      text-align: center;
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      cursor: pointer;
+      transition: all 0.3s;
+      color: var(--muted);
+      position: relative;
+    }
+
+    .vib-tab.active {
+      color: var(--gold);
+    }
+
+    .vib-tab.active::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--gold);
+      box-shadow: 0 0 10px var(--gold);
+    }
+
+    .vib-form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .vib-label {
+      display: block;
+      font-size: 0.7rem;
+      font-family: 'Cinzel', serif;
+      letter-spacing: 1.5px;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+    }
+
+    .vib-input {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(201, 168, 76, 0.2);
+      padding: 0.8rem 1rem;
+      color: var(--smoke);
+      font-family: 'DM Sans', sans-serif;
+      border-radius: 4px;
+      transition: all 0.3s;
+      box-sizing: border-box;
+    }
+
+    .vib-input:focus {
+      outline: none;
+      border-color: var(--gold);
+      background: rgba(255, 255, 255, 0.06);
+      box-shadow: 0 0 15px rgba(201, 168, 76, 0.1);
+    }
+
+    .vib-options {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: -0.5rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.75rem;
+    }
+
+    .vib-remember {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--muted);
+    }
+
+    .vib-forgot {
+      color: var(--muted);
+      text-decoration: none;
+      font-family: 'Cinzel', serif;
+      letter-spacing: 1px;
+      transition: color 0.3s;
+    }
+
+    .vib-forgot:hover {
+      color: var(--gold);
+    }
+
+    .vib-btn {
+      width: 100%;
+      padding: 1rem;
+      background: linear-gradient(45deg, #422a18, #2d1b0f);
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-family: 'Cinzel', serif;
+      letter-spacing: 3px;
+      cursor: pointer;
+      transition: all 0.4s;
+      text-transform: uppercase;
+      font-weight: 600;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .vib-btn:hover {
+      background: var(--gold);
+      color: var(--dark);
+      box-shadow: 0 0 30px rgba(201, 168, 76, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .vib-sep {
+      display: flex;
+      align-items: center;
+      margin: 1.5rem 0;
+      color: var(--muted);
+      font-size: 0.7rem;
+      letter-spacing: 1px;
+    }
+
+    .vib-sep::before,
+    .vib-sep::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(201, 168, 76, 0.15);
+      margin: 0 1rem;
+    }
+
+    .vib-google {
+      width: 100%;
+      padding: 0.8rem;
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--smoke2);
+      font-family: 'Cinzel', serif;
+      letter-spacing: 2px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .vib-google:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .vib-footer {
+      text-align: center;
+      margin-top: 1.5rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .vib-footer span {
+      color: var(--gold);
+      cursor: pointer;
+      margin-left: 0.3rem;
+    }
+
+    .vib-msg {
+      padding: 0.8rem;
+      margin-bottom: 1.5rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      text-align: center;
+      display: none;
+      animation: fadeIn 0.3s;
+    }
+
+    .vib-msg.success {
+      background: rgba(0, 255, 0, 0.1);
+      color: #8f8;
+      border: 1px solid rgba(0, 255, 0, 0.2);
+    }
+
+    .vib-msg.error {
+      background: rgba(255, 0, 0, 0.1);
+      color: #f88;
+      border: 1px solid rgba(255, 0, 0, 0.2);
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <a href="index.html" class="login-logo">
+    <img src="data:image/png;base64,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"
+      alt="Anchorage Logo">
+    <div class="logo-text">
+      <span class="nb-name">VIBRATIONS</span>
+      <span class="nb-sub">Anchorage · Shivaji College</span>
     </div>
-    <div class="vib-divider"></div>
+  </a>
 
-    <div class="vib-tabs">
-      <button class="vib-tab active" id="tab-login" onclick="switchTab('login')">Sign In</button>
-      <button class="vib-tab" id="tab-signup" onclick="switchTab('signup')">Register</button>
-    </div>
+  <div class="vib-login-root">
+    <div class="vib-hd"></div>
+    <div class="vib-cnt">
+      <div class="vib-title-wrap">
+        <span class="vib-top-sub">Annual Cultural Festival · 2027</span>
+        <h1 class="vib-main-title">VIBRATIONS</h1>
+        <div class="vib-btm-sub">Shivaji College · Delhi University</div>
+      </div>
 
-    <form onsubmit="handleSubmit(event)">
-      <div class="vib-signup-fields" id="signup-name-field">
-        <div class="vib-field">
-          <label class="vib-label">Full Name</label>
-          <input class="vib-input" id="inp-name" type="text" placeholder="Your name" autocomplete="name">
+      <div class="vib-tabs">
+        <div class="vib-tab active" id="tab-login" onclick="setMode('login')">Sign In</div>
+        <div class="vib-tab" id="tab-signup" onclick="setMode('signup')">Register</div>
+      </div>
+
+      <div id="vib-msg" class="vib-msg"></div>
+
+      <form id="vib-form" onsubmit="handleSubmit(event)">
+        <div id="signup-fields" style="display: none;">
+          <div class="vib-form-group">
+            <label class="vib-label">Full Name</label>
+            <input type="text" id="inp-name" class="vib-input" placeholder="Your name">
+          </div>
         </div>
-      </div>
 
-      <div class="vib-field">
-        <label class="vib-label">Email Address</label>
-        <input class="vib-input" id="inp-email" type="email" placeholder="you@example.com" autocomplete="email">
-      </div>
-
-      <div class="vib-field">
-        <label class="vib-label">Password</label>
-        <input class="vib-input" id="inp-pass" type="password" placeholder="Enter password" autocomplete="current-password">
-      </div>
-
-      <div class="vib-signup-fields" id="signup-confirm-field">
-        <div class="vib-field">
-          <label class="vib-label">Confirm Password</label>
-          <input class="vib-input" id="inp-pass2" type="password" placeholder="Re-enter password">
+        <div class="vib-form-group">
+          <label class="vib-label">Email Address</label>
+          <input type="email" id="inp-email" class="vib-input" placeholder="you@example.com" required>
         </div>
-        <div class="vib-field">
-          <label class="vib-label">College / Institution</label>
-          <input class="vib-input" id="inp-college" type="text" placeholder="Your college name">
+
+        <div class="vib-form-group">
+          <label class="vib-label">Password</label>
+          <input type="password" id="inp-password" class="vib-input" placeholder="Enter password" required>
         </div>
+
+        <div id="signup-confirm" style="display: none;">
+          <div class="vib-form-group">
+            <label class="vib-label">Confirm Password</label>
+            <input type="password" id="inp-pass2" class="vib-input" placeholder="Repeat password">
+          </div>
+        </div>
+
+        <div class="vib-options" id="login-options">
+          <label class="vib-remember">
+            <input type="checkbox"> Remember me
+          </label>
+          <a href="#" class="vib-forgot" onclick="forgotPassword()">Forgot Password?</a>
+        </div>
+
+        <button type="submit" class="vib-btn" id="btn-submit">Enter the Festival</button>
+      </form>
+
+      <div class="vib-sep">or continue with</div>
+
+      <button class="vib-google" onclick="googleSignIn()">Google Account</button>
+
+      <div class="vib-footer" id="mode-footer">
+        New to Vibrations? <span onclick="setMode('signup')">Create an account</span>
       </div>
-
-      <div class="vib-row" id="row-remember">
-        <label class="vib-check-label">
-          <input type="checkbox" id="chk-remember"> Remember me
-        </label>
-        <a class="vib-forgot" onclick="forgotPassword()">Forgot password?</a>
-      </div>
-
-      <button class="vib-btn" type="submit" id="submit-btn">Enter the Festival</button>
-      <div class="vib-divider-text">or continue with</div>
-      <button class="vib-btn vib-btn-ghost" type="button" onclick="googleSignIn()">Google Account</button>
-
-      <div class="vib-msg" id="vib-msg"></div>
-    </form>
-
-    <div class="vib-footer-note" id="footer-note">
-      New to Vibrations? <span onclick="switchTab('signup')">Create an account</span>
     </div>
   </div>
-</div>
 
-<script>
-  let mode = 'login';
+  <script>
+    let mode = 'login';
 
-  function switchTab(t) {
-    mode = t;
-    document.getElementById('tab-login').classList.toggle('active', t === 'login');
-    document.getElementById('tab-signup').classList.toggle('active', t === 'signup');
-    const sf = document.querySelectorAll('.vib-signup-fields');
-    sf.forEach(el => el.classList.toggle('visible', t === 'signup'));
-    document.getElementById('row-remember').style.display = t === 'login' ? 'flex' : 'none';
-    document.getElementById('submit-btn').textContent = t === 'login' ? 'Enter the Festival' : 'Create Account';
-    document.getElementById('footer-note').innerHTML = t === 'login'
-      ? 'New to Vibrations? <span onclick="switchTab(\'signup\')">Create an account</span>'
-      : 'Already registered? <span onclick="switchTab(\'login\')">Sign in</span>';
-    hideMsg();
-  }
+    function setMode(m) {
+      mode = m;
+      const loginTab = document.getElementById('tab-login');
+      const signupTab = document.getElementById('tab-signup');
+      const signupFields = document.getElementById('signup-fields');
+      const signupConfirm = document.getElementById('signup-confirm');
+      const loginOptions = document.getElementById('login-options');
+      const btnSubmit = document.getElementById('btn-submit');
+      const footer = document.getElementById('mode-footer');
 
-  function showMsg(text, type) {
-    const el = document.getElementById('vib-msg');
-    el.textContent = text;
-    el.className = 'vib-msg ' + type;
-  }
-  function hideMsg() {
-    document.getElementById('vib-msg').className = 'vib-msg';
-  }
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    const email = document.getElementById('inp-email').value.trim();
-    const pass = document.getElementById('inp-pass').value;
-    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-
-    if (!email || !emailOk) { showMsg('Please enter a valid email address.', 'error'); return; }
-    if (pass.length < 6) { showMsg('Password must be at least 6 characters.', 'error'); return; }
-
-    if (mode === 'signup') {
-      const name = document.getElementById('inp-name').value.trim();
-      const pass2 = document.getElementById('inp-pass2').value;
-      if (!name) { showMsg('Please enter your full name.', 'error'); return; }
-      if (pass !== pass2) { showMsg('Passwords do not match.', 'error'); return; }
-      showMsg('Account created! Welcome to Vibrations 2027.', 'success');
-      localStorage.setItem('isLoggedIn', 'true');
-      localStorage.setItem('userName', name);
-      setTimeout(() => { window.location.href = 'index.html'; }, 1000);
-    } else {
-      showMsg('Signed in successfully. Welcome back!', 'success');
-
-      localStorage.setItem("isLoggedIn", "true");
-
-      // redirect to home page after login
-      setTimeout(() => {
-        window.location.href = "index.html";
-      }, 1000);
+      if (mode === 'login') {
+        loginTab.classList.add('active');
+        signupTab.classList.remove('active');
+        signupFields.style.display = 'none';
+        signupConfirm.style.display = 'none';
+        loginOptions.style.display = 'flex';
+        btnSubmit.textContent = 'Enter the Festival';
+        footer.innerHTML = 'New to Vibrations? <span onclick="setMode(\'signup\')">Create an account</span>';
+      } else {
+        loginTab.classList.remove('active');
+        signupTab.classList.add('active');
+        signupFields.style.display = 'block';
+        signupConfirm.style.display = 'block';
+        loginOptions.style.display = 'none';
+        btnSubmit.textContent = 'Join the Journey';
+        footer.innerHTML = 'Already registered? <span onclick="setMode(\'login\')">Sign in instead</span>';
+      }
     }
-  }
 
-  function forgotPassword() {
-    const email = document.getElementById('inp-email').value.trim();
-    if (!email) { showMsg('Enter your email above to reset password.', 'error'); return; }
-    showMsg('Password reset link sent to ' + email, 'success');
-  }
-
-  function googleSignIn() {
-    showMsg('Google sign-in coming soon.', 'error');
-  }
-
-  window.onload = () => {
-    if (!localStorage.getItem("isLoggedIn")) {
-      document.getElementById("tab-signup").style.display = "none";
+    function showMsg(text, type) {
+      const msg = document.getElementById('vib-msg');
+      msg.textContent = text;
+      msg.className = 'vib-msg ' + type;
+      msg.style.display = 'block';
     }
-  };
-</script>
+
+    function handleSubmit(e) {
+      e.preventDefault();
+      const email = document.getElementById('inp-email').value.trim();
+      const pass = document.getElementById('inp-password').value;
+
+      if (!email || !pass) {
+        showMsg('Please fill in all required fields.', 'error');
+        return;
+      }
+
+      if (mode === 'signup') {
+        const name = document.getElementById('inp-name').value.trim();
+        const pass2 = document.getElementById('inp-pass2').value;
+        if (!name) { showMsg('Please enter your full name.', 'error'); return; }
+        if (pass !== pass2) { showMsg('Passwords do not match.', 'error'); return; }
+
+        showMsg('Account created successfully! Welcome to Vibrations.', 'success');
+        localStorage.setItem("isLoggedIn", "true");
+        setTimeout(() => { window.location.href = "index.html"; }, 1000);
+      } else {
+        showMsg('Signed in successfully. Welcome back!', 'success');
+        localStorage.setItem("isLoggedIn", "true");
+        setTimeout(() => { window.location.href = "index.html"; }, 1000);
+      }
+    }
+
+    function forgotPassword() {
+      const email = document.getElementById('inp-email').value.trim();
+      if (!email) { showMsg('Enter your email above to reset password.', 'error'); return; }
+      showMsg('Password reset link sent to ' + email, 'success');
+    }
+
+    function googleSignIn() {
+      showMsg('Google sign-in coming soon.', 'error');
+    }
+
+    window.onload = () => {
+      // Logic for conditional signup tab display
+      if (!localStorage.getItem("isLoggedIn")) {
+        // If not logged in, user must login first to register? 
+        // Or did the user mean they want to HIDE register until they are in some state?
+        // Let's stick to the previous request of hiding signup tab if not logged in.
+        document.getElementById("tab-signup").style.display = "none";
+      }
+    };
+  </script>
+</body>
+
+</html>
