@@ -327,13 +327,25 @@
     }
 
     @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-20px); }
-      to   { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; }
-      to   { opacity: 1; }
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
     }
 
     .csb {
@@ -347,7 +359,10 @@
       text-align: center;
     }
 
-    .csb::before, .csb::after { content: " ✦ "; }
+    .csb::before,
+    .csb::after {
+      content: " ✦ ";
+    }
 
     .cd {
       display: flex;
@@ -364,7 +379,9 @@
       flex: 1;
     }
 
-    .cdb+.cdb { border-left: none; }
+    .cdb+.cdb {
+      border-left: none;
+    }
 
     .cdn {
       font-family: "Cinzel Decorative", serif;
@@ -395,8 +412,15 @@
     }
 
     @keyframes blink {
-      0%, 100% { opacity: .4; }
-      50%       { opacity: .1; }
+
+      0%,
+      100% {
+        opacity: .4;
+      }
+
+      50% {
+        opacity: .1;
+      }
     }
   </style>
 </head>
@@ -495,13 +519,13 @@
 
     function setMode(m) {
       mode = m;
-      const loginTab      = document.getElementById('tab-login');
-      const signupTab     = document.getElementById('tab-signup');
-      const signupFields  = document.getElementById('signup-fields');
+      const loginTab = document.getElementById('tab-login');
+      const signupTab = document.getElementById('tab-signup');
+      const signupFields = document.getElementById('signup-fields');
       const signupConfirm = document.getElementById('signup-confirm');
-      const loginOptions  = document.getElementById('login-options');
-      const btnSubmit     = document.getElementById('btn-submit');
-      const footer        = document.getElementById('mode-footer');
+      const loginOptions = document.getElementById('login-options');
+      const btnSubmit = document.getElementById('btn-submit');
+      const footer = document.getElementById('mode-footer');
 
       // Clear any lingering messages when switching tabs
       hideMsg();
@@ -509,17 +533,17 @@
       if (mode === 'login') {
         loginTab.classList.add('active');
         signupTab.classList.remove('active');
-        signupFields.style.display  = 'none';
+        signupFields.style.display = 'none';
         signupConfirm.style.display = 'none';
-        loginOptions.style.display  = 'flex';
+        loginOptions.style.display = 'flex';
         btnSubmit.textContent = 'Enter the Festival';
         footer.innerHTML = 'New to Vibrations? <span onclick="setMode(\'signup\')">Create an account</span>';
       } else {
         loginTab.classList.remove('active');
         signupTab.classList.add('active');
-        signupFields.style.display  = 'block';
+        signupFields.style.display = 'block';
         signupConfirm.style.display = 'block';
-        loginOptions.style.display  = 'none';
+        loginOptions.style.display = 'none';
         btnSubmit.textContent = 'Join the Journey';
         footer.innerHTML = 'Already registered? <span onclick="setMode(\'login\')">Sign in instead</span>';
       }
@@ -528,7 +552,7 @@
     function showMsg(text, type) {
       const msg = document.getElementById('vib-msg');
       msg.textContent = text;
-      msg.className   = 'vib-msg ' + type;
+      msg.className = 'vib-msg ' + type;
       msg.style.display = 'block';
     }
 
@@ -551,7 +575,7 @@
       e.preventDefault();
 
       const email = document.getElementById('inp-email').value.trim();
-      const pass  = document.getElementById('inp-password').value;
+      const pass = document.getElementById('inp-password').value;
 
       if (!email || !pass) {
         showMsg('Please fill in all required fields.', 'error');
@@ -559,7 +583,7 @@
       }
 
       if (mode === 'signup') {
-        const name  = document.getElementById('inp-name').value.trim();
+        const name = document.getElementById('inp-name').value.trim();
         const pass2 = document.getElementById('inp-pass2').value;
 
         // FIX: validate that the name field is filled on signup
@@ -635,34 +659,35 @@
       }
     }
 
-    async function googleSignIn() {
-      const { data, error } = await supabaseClient.auth.signInWithOAuth({
-        provider: 'google',
-        options: {
-          redirectTo: "https://vibration.space/index.html"
-        }
-      });
-
-      if (error) {
-        showMsg(error.message, 'error');
-      }
+   async function googleSignIn() {
+  const { data, error } = await supabaseClient.auth.signInWithOAuth({
+    provider: "google",
+    options: {
+      redirectTo: "https://www.vibration.space/index.html"
     }
+  });
+
+  if (error) {
+    showMsg(error.message, 'error');
+  }
+}
 
     // Countdown timer
     function tick() {
       const d = new Date('2027-03-01T00:00:00') - new Date();
       if (d <= 0) return;
       const dd = Math.floor(d / 864e5);
-      const h  = Math.floor(d % 864e5 / 36e5);
-      const m  = Math.floor(d % 36e5  / 6e4);
-      const s  = Math.floor(d % 6e4   / 1e3);
+      const h = Math.floor(d % 864e5 / 36e5);
+      const m = Math.floor(d % 36e5 / 6e4);
+      const s = Math.floor(d % 6e4 / 1e3);
       document.getElementById('cd-d').textContent = String(dd).padStart(3, '0');
-      document.getElementById('cd-h').textContent = String(h).padStart(2,  '0');
-      document.getElementById('cd-m').textContent = String(m).padStart(2,  '0');
-      document.getElementById('cd-s').textContent = String(s).padStart(2,  '0');
+      document.getElementById('cd-h').textContent = String(h).padStart(2, '0');
+      document.getElementById('cd-m').textContent = String(m).padStart(2, '0');
+      document.getElementById('cd-s').textContent = String(s).padStart(2, '0');
     }
     tick();
     setInterval(tick, 1000);
   </script>
 </body>
+
 </html>
