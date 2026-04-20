@@ -34,7 +34,6 @@
       color: var(--smoke);
     }
 
-    /* Logo Header */
     .login-logo {
       margin-bottom: 2rem;
       text-decoration: none;
@@ -218,6 +217,11 @@
       font-family: 'Cinzel', serif;
       letter-spacing: 1px;
       transition: color 0.3s;
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-size: 0.75rem;
+      padding: 0;
     }
 
     .vib-forgot:hover {
@@ -240,11 +244,16 @@
       overflow: hidden;
     }
 
-    .vib-btn:hover {
+    .vib-btn:hover:not(:disabled) {
       background: var(--gold);
       color: var(--dark);
       box-shadow: 0 0 30px rgba(201, 168, 76, 0.3);
       transform: translateY(-2px);
+    }
+
+    .vib-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
     }
 
     .vib-sep {
@@ -318,13 +327,25 @@
     }
 
     @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
     }
 
     .csb {
@@ -391,8 +412,15 @@
     }
 
     @keyframes blink {
-      0%, 100% { opacity: .4; }
-      50% { opacity: .1; }
+
+      0%,
+      100% {
+        opacity: .4;
+      }
+
+      50% {
+        opacity: .1;
+      }
     }
   </style>
 </head>
@@ -400,8 +428,6 @@
 <body>
 
   <a href="index.html" class="login-logo">
-    <img src="videos/anchorage.jpg"
-      alt="Anchorage Logo">
     <div class="logo-text">
       <span class="nb-name">VIBRATIONS</span>
       <span class="nb-sub">Anchorage · Shivaji College</span>
@@ -464,7 +490,9 @@
           <label class="vib-remember">
             <input type="checkbox"> Remember me
           </label>
-          <a href="#" class="vib-forgot" onclick="forgotPassword()">Forgot Password?</a>
+          <!-- FIX: was href="#" onclick="forgotPassword()" which caused page reload;
+               now a button so it doesn't submit the form or navigate -->
+          <button type="button" class="vib-forgot" onclick="forgotPassword()">Forgot Password?</button>
         </div>
 
         <button type="submit" class="vib-btn" id="btn-submit">Enter the Festival</button>
@@ -499,6 +527,9 @@
       const btnSubmit = document.getElementById('btn-submit');
       const footer = document.getElementById('mode-footer');
 
+      // Clear any lingering messages when switching tabs
+      hideMsg();
+
       if (mode === 'login') {
         loginTab.classList.add('active');
         signupTab.classList.remove('active');
@@ -525,6 +556,21 @@
       msg.style.display = 'block';
     }
 
+    function hideMsg() {
+      const msg = document.getElementById('vib-msg');
+      msg.style.display = 'none';
+    }
+
+    function setLoading(loading) {
+      // FIX: disable the submit button while an async request is in flight
+      // to prevent double-submits
+      const btn = document.getElementById('btn-submit');
+      btn.disabled = loading;
+      btn.textContent = loading
+        ? 'Please wait…'
+        : (mode === 'login' ? 'Enter the Festival' : 'Join the Journey');
+    }
+
     async function handleSubmit(e) {
       e.preventDefault();
 
@@ -537,54 +583,113 @@
       }
 
       if (mode === 'signup') {
+        const name = document.getElementById('inp-name').value.trim();
+        const pass2 = document.getElementById('inp-pass2').value;
+
+        // FIX: validate that the name field is filled on signup
+        if (!name) {
+          showMsg('Please enter your full name.', 'error');
+          return;
+        }
+
+        // FIX: validate password confirmation match
+        if (pass !== pass2) {
+          showMsg('Passwords do not match.', 'error');
+          return;
+        }
+
+        // FIX: enforce a minimum password length (Supabase default is 6)
+        if (pass.length < 6) {
+          showMsg('Password must be at least 6 characters.', 'error');
+          return;
+        }
+
+        setLoading(true);
         const { data, error } = await supabaseClient.auth.signUp({
-          email: email,
-          password: pass
+          email,
+          password: pass,
+          options: {
+            // FIX: pass the display name into user metadata so it's stored
+            data: { full_name: name }
+          }
         });
+        setLoading(false);
 
         if (error) {
           showMsg(error.message, 'error');
         } else {
-          showMsg("Signup successful! Check your email for a confirmation link.", 'success');
+          showMsg('Signup successful! Check your email for a confirmation link.', 'success');
         }
 
       } else {
+        setLoading(true);
         const { data, error } = await supabaseClient.auth.signInWithPassword({
-          email: email,
+          email,
           password: pass
         });
+        setLoading(false);
 
         if (error) {
-          showMsg("Invalid login credentials", 'error');
+          showMsg('Invalid email or password.', 'error');
         } else {
-          showMsg("Login successful! Redirecting...", 'success');
-          setTimeout(() => {
-            window.location.href = "index.html";
-          }, 1000);
+          showMsg('Login successful! Redirecting…', 'success');
+          setTimeout(() => { window.location.href = 'index.html'; }, 1000);
         }
       }
     }
 
-    function forgotPassword() {
+    async function forgotPassword() {
+      // FIX: was a no-op stub; now calls Supabase's actual password reset API
       const email = document.getElementById('inp-email').value.trim();
-      if (!email) { showMsg('Enter your email above to reset password.', 'error'); return; }
-      showMsg('Password reset link sent to ' + email, 'success');
+      if (!email) {
+        showMsg('Enter your email above to reset your password.', 'error');
+        return;
+      }
+
+      const { error } = await supabaseClient.auth.resetPasswordForEmail(email, {
+        // FIX: redirectTo must point to a page where the user can enter their
+        // new password (Supabase appends an access_token hash to this URL)
+        redirectTo: window.location.origin + '/reset-password.html'
+      });
+
+      if (error) {
+        showMsg(error.message, 'error');
+      } else {
+        showMsg('Password reset link sent to ' + email, 'success');
+      }
     }
 
-    function googleSignIn() {
-      showMsg('Google sign-in coming soon.', 'error');
+    async function googleSignIn() {
+      const { data, error } = await supabaseClient.auth.signInWithOAuth({
+        provider: 'google',
+        options: {
+          // FIX: redirect back to the correct page after OAuth completes.
+          // Using window.location.href (full URL including path) rather than
+          // window.location.origin (just the origin) ensures deep-linked pages
+          // also work, and the path must be allow-listed in your Supabase dashboard.
+          redirectTo: window.location.href
+        }
+      });
+
+      if (error) {
+        showMsg(error.message, 'error');
+      }
     }
 
+    // Countdown timer
     function tick() {
-      const d = new Date("2027-03-01T00:00:00") - new Date();
+      const d = new Date('2027-03-01T00:00:00') - new Date();
       if (d <= 0) return;
-      const dd = Math.floor(d / 864e5), h = Math.floor(d % 864e5 / 36e5), m = Math.floor(d % 36e5 / 6e4), s = Math.floor(d % 6e4 / 1e3);
-      document.getElementById("cd-d").textContent = String(dd).padStart(3, "0");
-      document.getElementById("cd-h").textContent = String(h).padStart(2, "0");
-      document.getElementById("cd-m").textContent = String(m).padStart(2, "0");
-      document.getElementById("cd-s").textContent = String(s).padStart(2, "0");
+      const dd = Math.floor(d / 864e5);
+      const h = Math.floor(d % 864e5 / 36e5);
+      const m = Math.floor(d % 36e5 / 6e4);
+      const s = Math.floor(d % 6e4 / 1e3);
+      document.getElementById('cd-d').textContent = String(dd).padStart(3, '0');
+      document.getElementById('cd-h').textContent = String(h).padStart(2, '0');
+      document.getElementById('cd-m').textContent = String(m).padStart(2, '0');
+      document.getElementById('cd-s').textContent = String(s).padStart(2, '0');
     }
-    tick(); 
+    tick();
     setInterval(tick, 1000);
   </script>
 </body>
