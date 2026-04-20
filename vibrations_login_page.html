@@ -659,22 +659,18 @@
       }
     }
 
-    async function googleSignIn() {
-      const { data, error } = await supabaseClient.auth.signInWithOAuth({
-        provider: 'google',
-        options: {
-          // FIX: redirect back to the correct page after OAuth completes.
-          // Using window.location.href (full URL including path) rather than
-          // window.location.origin (just the origin) ensures deep-linked pages
-          // also work, and the path must be allow-listed in your Supabase dashboard.
-          redirectTo: window.location.href
-        }
-      });
-
-      if (error) {
-        showMsg(error.message, 'error');
-      }
+    aasync function googleSignIn() {
+  const { data, error } = await supabaseClient.auth.signInWithOAuth({
+    provider: "google",
+    options: {
+      redirectTo: "https://vibration.space/index.html" // 👈 CHANGE THIS
     }
+  });
+
+  if (error) {
+    showMsg(error.message, 'error');
+  }
+}
 
     // Countdown timer
     function tick() {
