@@ -16,7 +16,7 @@
     async function checkUser() {
       const { data } = await supabaseClient.auth.getUser();
       if (!data.user) {
-        window.location.href = "login.html";
+        window.location.href = "vibrations_login_page.html";
       }
     }
 
@@ -24,7 +24,7 @@
 
     async function logout() {
       await supabaseClient.auth.signOut();
-      window.location.href = "login.html";
+      window.location.href = "vibrations_login_page.html";
     }
   </script>
   <link
@@ -1010,7 +1010,7 @@
 
     async function logout() {
       await supabase.auth.signOut();
-      window.location.href = "login.html";
+      window.location.href = "vibrations_login_page.html";
     }
   </script>
 </body>
